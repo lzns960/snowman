@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import User from './pages/User/User';
 import { Routes, Route } from 'react-router-dom';
-
+import './App.css';
 function App() {
   return (
     <>
