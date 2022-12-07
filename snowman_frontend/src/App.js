@@ -7,8 +7,10 @@ import SnowmanGarden from './pages/SnowmanGarden/SnowmanGarden';
 function App() {
   return (
     <>
+      <canvas id="snow"></canvas>
       <Routes>
         <Route path="/" element={<SnowmanGarden />} />
+        <Route path="/user" element={<User />} />
       </Routes>
     </>
   );
