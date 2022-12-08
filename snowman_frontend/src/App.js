@@ -7,12 +7,12 @@ import './App.css';
 
 function App() {
   return (
-    <>
+    <div id="App">
       <Snowfall />
       <Routes>
         <Route path="/" element={<SnowmanGarden />} />
       </Routes>
-    </>
+    </div>
   );
 }
 
