@@ -3,6 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 
 const GlobalStyle = createGlobalStyle`
+
   ${reset}
   * {
     box-sizing:border-box;
@@ -18,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
   text-decoration: none;
   }
   body {
-    background-color: #0f1322
+    background-color: #0f1322;
   }
 }
 `;

@@ -9,7 +9,10 @@ export default function AllContainer(props) {
 }
 
 const Container = styled.div`
-  width: 768px;
-  height: 100vh;
+  width: 100%;
+  max-width: 768px;
+  height: 100%;
+  min-height: calc(var(--vh, 1vh) * 100);
   margin: auto;
+  position: relative;
 `;
