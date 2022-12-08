@@ -8,6 +8,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing:border-box;
     outline:none;
     border:none;
+    color: white;
 
   input {
   outline: none;

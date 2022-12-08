@@ -1,9 +1,9 @@
 @font-face {
   font-family: 'bitbit';
-  src: url('../public/fonts/DNFBitBitOTF.otf'),
-    url('../public/fonts/DNFBitBitTTF.ttf');
+  src: url('../public/fonts/DNFBitBitOTF.otf') format('truetype'),
+    url('../public/fonts/DNFBitBitTTF.ttf') format('woff');
 }
 
-body {
+#App {
   font-family: 'bitbit';
 }
