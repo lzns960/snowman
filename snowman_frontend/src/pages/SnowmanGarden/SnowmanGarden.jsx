@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import AllContainer from '../../components/AllContainer';
-
+import { GiHamburgerMenu } from 'react-icons/gi';
+import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from 'react-icons/fa';
 export default function SnowmanGarden() {
   return (
     <AllContainer>
@@ -47,10 +48,19 @@ export default function SnowmanGarden() {
             <img
               src={process.env.PUBLIC_URL + '/images/treeHomeSanta.png'}
               alt="treeHomeSanta"
-              style={{ width: 'inherit', objectFit: 'cover' }}
+              style={{
+                display: 'block',
+                margin: 'auto',
+              }}
             />
           </Santa>
+
           <Snow></Snow>
+          <GiHamburgerMenu size="30" />
+
+          <FaArrowAltCircleLeft size="30" />
+          <FaArrowAltCircleRight size="30" />
+
           <DesignBtn>눈사람 만들어주기</DesignBtn>
         </Garden>
       </Main>
@@ -111,7 +121,7 @@ const Snowman = styled.div`
 `;
 const Santa = styled.div`
   position: absolute;
-  bottom: 35vh;
+  bottom: 38vh;
   width: 100%;
   z-index: 1;
 `;
