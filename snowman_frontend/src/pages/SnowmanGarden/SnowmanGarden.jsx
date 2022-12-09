@@ -6,6 +6,16 @@ export default function SnowmanGarden() {
   return (
     <AllContainer>
       <Main>
+        <GiHamburgerMenu
+          size="30"
+          style={{
+            position: 'absolute',
+            top: '2.5%',
+            right: '3%',
+            zIndex: '99',
+            cursor: 'pointer',
+          }}
+        />
         <MainText>
           <span style={{ color: '#f5c51f' }}>수지</span> 님의 정원에
           <br></br>
@@ -19,36 +29,64 @@ export default function SnowmanGarden() {
 
         <Garden>
           <Snowman>
+            <DefaultSnowman>
+              <img
+                src={process.env.PUBLIC_URL + '/images/snowman.png'}
+                alt="snowman"
+              />
+              <img
+                src={process.env.PUBLIC_URL + '/images/snowman.png'}
+                alt="snowman"
+              />
+            </DefaultSnowman>
+
+            <SecondLine>
+              <img
+                src={process.env.PUBLIC_URL + '/images/snowman.png'}
+                alt="snowman"
+                className="secondSnowman"
+              />
+              <img
+                src={process.env.PUBLIC_URL + '/images/snowman.png'}
+                alt="snowman"
+                className="thirdSnowman"
+              />
+            </SecondLine>
             <img
               src={process.env.PUBLIC_URL + '/images/snowman.png'}
               alt="snowman"
-              style={{
-                width: '30vh',
-                margin: 'auto',
-              }}
-            />
-            <img
-              src={process.env.PUBLIC_URL + '/images/snowman.png'}
-              alt="snowman"
-              style={{
-                width: '30vh',
-                margin: 'auto',
-              }}
-            />
-            <img
-              src={process.env.PUBLIC_URL + '/images/snowman.png'}
-              alt="snowman"
-              style={{
-                width: '30vh',
-                margin: 'auto',
-              }}
+              className="firstSnowman"
             />
           </Snowman>
+
+          <FaArrowAltCircleLeft
+            size="30"
+            style={{
+              position: 'absolute',
+              bottom: '50vh',
+              left: '3%',
+              cursor: 'pointer',
+              zIndex: '99',
+            }}
+          />
+          <FaArrowAltCircleRight
+            size="30"
+            style={{
+              position: 'absolute',
+              bottom: '50vh',
+              right: '3%',
+              cursor: 'pointer',
+              zIndex: '99',
+            }}
+          />
+
           <Santa>
             <img
               src={process.env.PUBLIC_URL + '/images/treeHomeSanta.png'}
               alt="treeHomeSanta"
               style={{
+                width: '45vh',
+                // objectFit: 'cover',
                 display: 'block',
                 margin: 'auto',
               }}
@@ -56,10 +94,6 @@ export default function SnowmanGarden() {
           </Santa>
 
           <Snow></Snow>
-          <GiHamburgerMenu size="30" />
-
-          <FaArrowAltCircleLeft size="30" />
-          <FaArrowAltCircleRight size="30" />
 
           <DesignBtn>눈사람 만들어주기</DesignBtn>
         </Garden>
@@ -113,11 +147,25 @@ const CaptureBtn = styled.button`
 
 const Garden = styled.div``;
 const Snowman = styled.div`
-  display: flex;
   position: absolute;
-  width: 100%;
-  top: 60vh;
+  bottom: 10vh;
   z-index: 99;
+  width: 100%;
+
+  .firstSnowman {
+    display: block;
+    margin: auto;
+  }
+`;
+const DefaultSnowman = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+const SecondLine = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  width: 80%;
+  margin: auto;
 `;
 const Santa = styled.div`
   position: absolute;
