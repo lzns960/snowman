@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 import AllContainer from '../../components/AllContainer';
 import { GiHamburgerMenu } from 'react-icons/gi';
-import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from 'react-icons/fa';
+import {
+  IoMdArrowDropleftCircle,
+  IoMdArrowDroprightCircle,
+} from 'react-icons/io';
 export default function SnowmanGarden() {
   return (
     <AllContainer>
@@ -59,7 +62,7 @@ export default function SnowmanGarden() {
             />
           </Snowman>
 
-          <FaArrowAltCircleLeft
+          <IoMdArrowDropleftCircle
             size="30"
             style={{
               position: 'absolute',
@@ -69,7 +72,7 @@ export default function SnowmanGarden() {
               zIndex: '99',
             }}
           />
-          <FaArrowAltCircleRight
+          <IoMdArrowDroprightCircle
             size="30"
             style={{
               position: 'absolute',
