@@ -1,7 +1,15 @@
+import { useNavigate } from 'react-router';
 import styled from 'styled-components';
 import AllContainer from '../../components/AllContainer';
 
 export default function SnowmanDesign() {
+  const navigate = useNavigate();
+  const linkSnowmanGarden = () => {
+    navigate('/');
+  };
+  const linkLetter = () => {
+    navigate('/letter');
+  };
   return (
     <AllContainer>
       <Main>
@@ -41,8 +49,8 @@ export default function SnowmanDesign() {
             <Attr></Attr>
           </AttrBox>
         </DesignBox>
-        <BackBtn>뒤로가기</BackBtn>
-        <LetterBtn>편지쓰러가기</LetterBtn>
+        <BackBtn onClick={linkSnowmanGarden}>뒤로가기</BackBtn>
+        <LetterBtn onClick={linkLetter}>편지쓰러가기</LetterBtn>
 
         <Tree>
           <img

@@ -22,7 +22,7 @@ const ShareBtn = styled.button`
   margin: 1rem 1rem 1rem 0rem;
   padding: 0.6rem;
   background-color: rgba(200, 200, 200, 0.5);
-  border-radius: 1.2rem;
+  border-radius: 5px;
   color: #dcdcdc;
   font-size: 1rem;
   font-family: 'bitbit';

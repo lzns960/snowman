@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router';
 import styled from 'styled-components';
 import AllContainer from '../../components/AllContainer';
 
 export default function SnowmanDesign() {
-  const [ nickName, setNickName ] = useState('');
-  const [ letter, setLetter ] = useState('');
+  const [nickName, setNickName] = useState('');
+  const [letter, setLetter] = useState('');
 
   const nickNameChange = (e) => {
     setNickName(e.target.value);
@@ -14,6 +15,13 @@ export default function SnowmanDesign() {
     setLetter(e.target.value);
   };
 
+  const navigate = useNavigate();
+  const linkSnowmanDesign = () => {
+    navigate('/snowmanDesign');
+  };
+  const linkSnowmanGarden = () => {
+    navigate('/');
+  };
   return (
     <AllContainer>
       <Main>
@@ -23,11 +31,14 @@ export default function SnowmanDesign() {
           <NameInput onChange={nickNameChange} />
         </NameBox>
         <LetterBox>
-          <LetterContent onChange={letterChange} placeholder='이곳에 편지를 써주세요!'/>
+          <LetterContent
+            onChange={letterChange}
+            placeholder="이곳에 편지를 써주세요!"
+          />
         </LetterBox>
         <BtnBox>
-          <BackBtn>뒤로가기</BackBtn>
-          <LetterBtn>작성완료</LetterBtn>
+          <BackBtn onClick={linkSnowmanDesign}>뒤로가기</BackBtn>
+          <LetterBtn onClick={linkSnowmanGarden}>작성완료</LetterBtn>
         </BtnBox>
       </Main>
       <Background>
@@ -35,7 +46,7 @@ export default function SnowmanDesign() {
         <TreeHome>
           <img
             src={process.env.PUBLIC_URL + '/images/treeHome.png'}
-            alt='tree'
+            alt="tree"
             style={{
               width: '100%',
               objectFit: 'cover',
@@ -60,25 +71,25 @@ const Main = styled.div`
 const LetterTitle = styled.div`
   color: white;
   font-size: 4rem;
-  margin:20% 0 10%;
+  margin: 20% 0 10%;
 `;
 
 const NameBox = styled.div`
-  display:flex;
+  display: flex;
   flex-direction: column;
   text-align: left;
   padding: 0 5%;
   & p {
-    font-size : 1.8rem;
+    font-size: 1.8rem;
   }
 `;
 
 const NameInput = styled.input`
-height: 50px;
-border-radius: 10px;
-margin-top: 5px;
-padding: 0 4%;
-color: black;
+  height: 50px;
+  border-radius: 10px;
+  margin-top: 5px;
+  padding: 0 4%;
+  color: black;
 `;
 
 const LetterBox = styled.div`
@@ -87,8 +98,8 @@ const LetterBox = styled.div`
 `;
 
 const LetterContent = styled.textarea`
-  width:100%;
-  height:40vh;
+  width: 100%;
+  height: 40vh;
   border-radius: 10px;
   resize: none;
   white-space: pre-wrap;
@@ -98,9 +109,9 @@ const LetterContent = styled.textarea`
 `;
 
 const BtnBox = styled.div`
-  margin: 5% 0;  
+  margin: 5% 0;
   padding: 0 5%;
-  display:flex;
+  display: flex;
   justify-content: space-between;
 `;
 
@@ -141,7 +152,6 @@ const LetterBtn = styled.div`
     cursor: pointer;
   }
 `;
-
 
 const Background = styled.div``;
 

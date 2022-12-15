@@ -6,7 +6,13 @@ import {
   IoMdArrowDroprightCircle,
 } from 'react-icons/io';
 import ShareUrl from './ShareUrl';
+import { useNavigate } from 'react-router';
+
 export default function SnowmanGarden() {
+  const navigate = useNavigate();
+  const linkSnowmanDesign = () => {
+    navigate('/snowmanDesign');
+  };
   return (
     <AllContainer>
       <Main>
@@ -99,7 +105,7 @@ export default function SnowmanGarden() {
 
           <Snow></Snow>
 
-          <DesignBtn>눈사람 만들어주기</DesignBtn>
+          <DesignBtn onClick={linkSnowmanDesign}>눈사람 만들어주기</DesignBtn>
         </Garden>
       </Main>
     </AllContainer>
@@ -120,7 +126,7 @@ const CaptureBtn = styled.button`
   display: inline;
   padding: 0.6rem;
   background-color: rgba(200, 200, 200, 0.5);
-  border-radius: 1.2rem;
+  border-radius: 5px;
   color: #dcdcdc;
   font-size: 1rem;
   font-family: 'bitbit';
