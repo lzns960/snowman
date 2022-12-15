@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.NaturalId;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -38,5 +39,14 @@ public class Post {
 	@NaturalId
 	@Column(length = 60)
 	private PostType postType;
+
+	@Builder
+	public Post(Snowman snowman, String author, String content,
+		PostType postType) {
+		this.snowman = snowman;
+		this.author = author;
+		this.content = content;
+		this.postType = postType;
+	}
 
 }
