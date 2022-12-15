@@ -21,19 +21,19 @@ export default function SnowmanDesign() {
               alt="snowman"
               style={{
                 width: '100%',
-                objectFit: 'cover'
+                objectFit: 'cover',
               }}
             />
           </Snowman>
         </SnowmanBox>
 
         <DesignBox>
-          <BtnBox>
+          <DesignBtnBox>
             <DesignBtn>모자</DesignBtn>
             <DesignBtn>얼굴</DesignBtn>
             <DesignBtn> 옷 </DesignBtn>
             <DesignBtn>장갑</DesignBtn>
-          </BtnBox>
+          </DesignBtnBox>
           <AttrBox>
             <Attr></Attr>
             <Attr></Attr>
@@ -74,8 +74,8 @@ const MainText = styled.div`
 `;
 
 const SnowmanBox = styled.div`
-  width:100%;
-  height:100%;
+  width: 100%;
+  height: 100%;
 `;
 
 const Snowman = styled.div`
@@ -88,15 +88,16 @@ const Snowman = styled.div`
   max-height: 298px;
   z-index: 99;
 
-  &img {
+  & img {
     max-width: 100%;
     height: auto;
   }
 `;
 
 const DesignBox = styled.div`
-  width:85%;
-  height:auto;
+  width: 85%;
+  max-width: 550px;
+  height: auto;
   position: absolute;
   left: 50%;
   transform: translate(-50%, 0);
@@ -107,7 +108,7 @@ const DesignBox = styled.div`
   z-index: 99;
 `;
 
-const BtnBox = styled.div`
+const DesignBtnBox = styled.div`
   width: 100%;
   height: 120%;
   margin: 0 auto 10px;
@@ -117,21 +118,21 @@ const BtnBox = styled.div`
 `;
 
 const DesignBtn = styled.div`
-  width:23%;
+  width: 23%;
   font-size: 1.7rem;
   line-height: 2.6rem;
   border-radius: 5px;
   background-color: #a2afc7;
-    &:hover {
-      color: white;
-      background-color: #33374a;
-      cursor: pointer;
-    }
+  &:hover {
+    color: white;
+    background-color: #33374a;
+    cursor: pointer;
+  }
 `;
 
 const AttrBox = styled.div`
   width: 100%;
-  margin:auto;
+  margin: auto;
   display: flex;
   justify-content: space-between;
   text-align: center;
@@ -148,7 +149,7 @@ const Attr = styled.div`
   background-color: white;
 
   &:after {
-    content: "";
+    content: '';
     display: block;
     padding-bottom: 100%;
   }
@@ -199,7 +200,6 @@ const LetterBtn = styled.div`
   }
 `;
 
-
 const Tree = styled.div`
   position: absolute;
   bottom: 40vh;
@@ -214,5 +214,3 @@ const Snow = styled.div`
   background-color: white;
   height: 42vh;
 `;
-
-
