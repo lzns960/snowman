@@ -1,10 +1,5 @@
 package com.gameduck.snowmanbackend.domain;
 
-import static javax.persistence.CascadeType.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,7 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -34,15 +28,9 @@ public class Snowman {
 	@JoinColumn(name = "user_id")
 	private User user;
 
-	private String hat;
+	private String snowmanTypeName;
 
-	private String face;
+	private String authorNickname;
 
-	private String clothes;
-
-	private String glove;
-
-	@OneToMany(mappedBy = "post", cascade = ALL)
-	private List<Post> postList = new ArrayList<>();
-
+	private String content;
 }
