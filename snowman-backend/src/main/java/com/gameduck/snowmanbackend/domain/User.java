@@ -7,6 +7,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -32,6 +34,19 @@ public class User {
 
 	private String nickname;
 
+	private String password;
+
 	@OneToMany(mappedBy = "user", cascade = ALL)
 	private List<Snowman> snowmanList = new ArrayList<>();
+
+	@Enumerated(EnumType.STRING)
+	private Role role;
+
+	@Builder
+	public User(String email, String nickname, String password, Role role) {
+		this.email = email;
+		this.nickname = nickname;
+		this.password = password;
+		this.role = role;
+	}
 }

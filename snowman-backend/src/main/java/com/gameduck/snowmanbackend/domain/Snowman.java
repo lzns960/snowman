@@ -1,6 +1,7 @@
 package com.gameduck.snowmanbackend.domain;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -22,15 +23,17 @@ public class Snowman {
 
 	@Id
 	@GeneratedValue
+	@Column(name = "snowman_id")
 	private Long id;
 
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "user_id")
 	private User user;
 
-	private String snowmanTypeName;
-
+	private String snowmanType;
+  
 	private String authorNickname;
 
-	private String content;
+	private String post;
+
 }
