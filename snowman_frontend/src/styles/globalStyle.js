@@ -18,9 +18,6 @@ const GlobalStyle = createGlobalStyle`
   a {
   text-decoration: none;
   }
-  body {
-    background-color: #0f1322;
-  }
 }
 `;
 

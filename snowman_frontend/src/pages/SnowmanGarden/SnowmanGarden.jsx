@@ -7,6 +7,7 @@ import {
 } from 'react-icons/io';
 import ShareUrl from './ShareUrl';
 import { useNavigate } from 'react-router';
+import CaptureImage from './CaptureImage';
 
 export default function SnowmanGarden() {
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ export default function SnowmanGarden() {
           <br></br>총 <span style={{ color: '#ce4545' }}>0</span> 개의 메세지
           <br></br>
           <ShareUrl />
-          <CaptureBtn># 캡쳐하기</CaptureBtn>
+          <CaptureImage />
         </MainText>
 
         <Garden>
@@ -120,22 +121,6 @@ const MainText = styled.div`
   font-size: 1.5rem;
   margin: 2rem;
   z-index: 99;
-`;
-
-const CaptureBtn = styled.button`
-  display: inline;
-  padding: 0.6rem;
-  background-color: rgba(200, 200, 200, 0.5);
-  border-radius: 5px;
-  color: #dcdcdc;
-  font-size: 1rem;
-  font-family: 'bitbit';
-
-  &:hover {
-    background-color: rgba(255, 255, 255, 0.5);
-    color: white;
-    cursor: pointer;
-  }
 `;
 
 const Garden = styled.div``;
