@@ -1,15 +1,30 @@
 import { useNavigate } from 'react-router';
 import styled from 'styled-components';
 import AllContainer from '../../components/AllContainer';
+import Slider from "react-slick";
 
 export default function SnowmanDesign() {
   const navigate = useNavigate();
   const linkSnowmanGarden = () => {
     navigate('/');
   };
+  
   const linkLetter = () => {
     navigate('/letter');
   };
+
+  // 슬라이드
+  const settings = {
+    dots: false,
+    arrows: false,
+    infinite: false,
+    vertical: false,
+    draggable: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 2
+  };
+
   return (
     <AllContainer>
       <Main>
@@ -35,22 +50,40 @@ export default function SnowmanDesign() {
           </Snowman>
         </SnowmanBox>
 
-        <DesignBox>
-          <DesignBtnBox>
-            <DesignBtn>모자</DesignBtn>
-            <DesignBtn>얼굴</DesignBtn>
-            <DesignBtn> 옷 </DesignBtn>
-            <DesignBtn>장갑</DesignBtn>
-          </DesignBtnBox>
-          <AttrBox>
-            <Attr></Attr>
-            <Attr></Attr>
-            <Attr></Attr>
-            <Attr></Attr>
-          </AttrBox>
-        </DesignBox>
-        <BackBtn onClick={linkSnowmanGarden}>뒤로가기</BackBtn>
-        <LetterBtn onClick={linkLetter}>편지쓰러가기</LetterBtn>
+          <DesignBox>
+            <DesignBtnBox>
+              <DesignBtn>눈사람 머리</DesignBtn>
+              <DesignBtn>눈사람 몸</DesignBtn>
+            </DesignBtnBox>
+            <StyledSlider {...settings}>
+              <AttrBox>
+                <Attr>1</Attr>
+              </AttrBox>
+              <AttrBox>
+                <Attr>2</Attr>
+              </AttrBox>
+              <AttrBox>
+                <Attr>3</Attr>
+              </AttrBox>
+              <AttrBox>
+                <Attr>4</Attr>
+              </AttrBox>
+              <AttrBox>
+                <Attr>5</Attr>
+              </AttrBox>
+              <AttrBox>
+                <Attr>6</Attr>
+              </AttrBox>
+              <AttrBox>
+                <Attr>7</Attr>
+              </AttrBox>
+              <AttrBox>
+                <Attr>8</Attr>
+              </AttrBox>
+            </StyledSlider>
+          </DesignBox>
+          <BackBtn onClick={linkSnowmanGarden}>뒤로가기</BackBtn>
+          <LetterBtn onClick={linkLetter}>편지쓰러가기</LetterBtn>
 
         <Tree>
           <img
@@ -94,7 +127,7 @@ const Snowman = styled.div`
   width: 30vw;
   max-width: 200px;
   max-height: 298px;
-  z-index: 99;
+  z-index: -1;
 
   & img {
     max-width: 100%;
@@ -104,7 +137,6 @@ const Snowman = styled.div`
 
 const DesignBox = styled.div`
   width: 85%;
-  max-width: 550px;
   height: auto;
   position: absolute;
   left: 50%;
@@ -126,31 +158,40 @@ const DesignBtnBox = styled.div`
 `;
 
 const DesignBtn = styled.div`
-  width: 23%;
+  width: 49%;
   font-size: 1.7rem;
   line-height: 2.6rem;
   border-radius: 5px;
   background-color: #a2afc7;
+  
   &:hover {
     color: white;
     background-color: #33374a;
     cursor: pointer;
   }
 `;
+  const StyledSlider = styled(Slider)`
+    width: 100%;
+    margin: auto;
+    justify-content: space-between;
+    text-align: center;
+    overflow: hidden;
+    padding: 0.5% 0;
+
+    .slick-track {
+      display:flex;
+    }
+  `;
 
 const AttrBox = styled.div`
-  width: 100%;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  text-align: center;
 `;
 
+
 const Attr = styled.div`
-  width: 50%;
-  max-width: 23%;
-  max-height: 70%;
-  margin: 2px;
+  color:black;
+  max-width: 140px;
+  max-height: 140px;
+  margin: 0 5px;
   border: 1px solid #eef0f5;
   outline: 3px solid #f7f9fd;
   border-radius: 15px;
@@ -159,7 +200,7 @@ const Attr = styled.div`
   &:after {
     content: '';
     display: block;
-    padding-bottom: 100%;
+    padding-bottom: 80%;
   }
 
   &:hover {
@@ -212,7 +253,7 @@ const Tree = styled.div`
   position: absolute;
   bottom: 40vh;
   width: 100%;
-  z-index: 1;
+  z-index: -2;
 `;
 
 const Snow = styled.div`
@@ -221,4 +262,5 @@ const Snow = styled.div`
   bottom: 0vh;
   background-color: white;
   height: 42vh;
+  z-index: -3;
 `;
