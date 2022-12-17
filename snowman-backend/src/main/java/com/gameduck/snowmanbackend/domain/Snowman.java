@@ -35,4 +35,12 @@ public class Snowman {
 
 	private String post;
 
+	@Builder
+	public Snowman(User user, String snowmanType, String authorNickname, String post) {
+		this.user = user;
+		this.snowmanType = snowmanType;
+		this.authorNickname = authorNickname;
+		this.post = post;
+	}
+
 }

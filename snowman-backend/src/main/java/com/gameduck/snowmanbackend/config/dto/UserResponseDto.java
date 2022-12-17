@@ -21,4 +21,9 @@ public class UserResponseDto {
 			.nickname(user.getNickname())
 			.build();
 	}
+
+	public UserResponseDto(User user) {
+		this.email = user.getEmail();
+		this.nickname = user.getNickname();
+	}
 }

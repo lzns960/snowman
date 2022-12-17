@@ -2,6 +2,7 @@ package com.gameduck.snowmanbackend.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -23,11 +24,11 @@ public class WebSecurityConfig {
 	private final TokenProvider tokenProvider;
 	private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
 	private final JwtAccessDeniedHandler jwtAccessDeniedHandler;
+
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-
 
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -44,6 +45,10 @@ public class WebSecurityConfig {
 			.and()
 			.authorizeRequests()
 			.antMatchers("/api/**").permitAll()
+			.antMatchers(HttpMethod.GET, "/api/**").permitAll()
+			.antMatchers(HttpMethod.POST, "/api/**").permitAll()
+			.antMatchers(HttpMethod.PUT, "/api/**").permitAll()
+			.antMatchers(HttpMethod.DELETE, "/api/**").permitAll()
 			.anyRequest().authenticated()
 
 			.and()
