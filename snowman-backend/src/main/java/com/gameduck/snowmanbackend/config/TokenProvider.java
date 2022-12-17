@@ -16,6 +16,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import com.gameduck.snowmanbackend.config.dto.TokenDto;
+import com.gameduck.snowmanbackend.config.dto.UserRequestDto;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -44,7 +45,7 @@ public class TokenProvider {
 	}
 
 	// 토큰 생성
-	public TokenDto generateTokenDto(Authentication authentication) {
+	public TokenDto generateTokenDto(Authentication authentication, UserRequestDto requestDto) {
 
 		String authorities = authentication.getAuthorities().stream()
 			.map(GrantedAuthority::getAuthority)
@@ -67,6 +68,7 @@ public class TokenProvider {
 			.grantType(BEARER_TYPE)
 			.accessToken(accessToken)
 			.tokenExpiresIn(tokenExpiresIn.getTime())
+			.email(requestDto.getEmail())
 			.build();
 	}
 
