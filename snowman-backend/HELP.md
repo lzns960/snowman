@@ -1,8 +1,3 @@
-# Read Me First
-The following was discovered as part of building this project:
-
-* The original package name 'com.gameduck.snowman-backend' is invalid and this project uses 'com.gameduck.snowmanbackend' instead.
-
 # Getting Started
 
 ### Reference Documentation
@@ -11,11 +6,13 @@ For further reference, please consider the following sections:
 * [Official Gradle documentation](https://docs.gradle.org)
 * [Spring Boot Gradle Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.7.6/gradle-plugin/reference/html/)
 * [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.7.6/gradle-plugin/reference/html/#build-image)
+* [Spring Boot DevTools](https://docs.spring.io/spring-boot/docs/2.7.6/reference/htmlsingle/#using.devtools)
+* [Spring Configuration Processor](https://docs.spring.io/spring-boot/docs/2.7.6/reference/htmlsingle/#appendix.configuration-metadata.annotation-processor)
 * [Spring Web](https://docs.spring.io/spring-boot/docs/2.7.6/reference/htmlsingle/#web)
 * [Spring Security](https://docs.spring.io/spring-boot/docs/2.7.6/reference/htmlsingle/#web.security)
 * [Spring Data JPA](https://docs.spring.io/spring-boot/docs/2.7.6/reference/htmlsingle/#data.sql.jpa-and-spring-data)
-* [Spring Boot DevTools](https://docs.spring.io/spring-boot/docs/2.7.6/reference/htmlsingle/#using.devtools)
 * [Spring Data JDBC](https://docs.spring.io/spring-boot/docs/2.7.6/reference/htmlsingle/#data.sql.jdbc)
+* [Validation](https://docs.spring.io/spring-boot/docs/2.7.6/reference/htmlsingle/#io.validation)
 
 ### Guides
 The following guides illustrate how to use some features concretely:
@@ -27,8 +24,9 @@ The following guides illustrate how to use some features concretely:
 * [Spring Boot and OAuth2](https://spring.io/guides/tutorials/spring-boot-oauth2/)
 * [Authenticating a User with LDAP](https://spring.io/guides/gs/authenticating-ldap/)
 * [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
-* [Accessing data with MySQL](https://spring.io/guides/gs/accessing-data-mysql/)
 * [Using Spring Data JDBC](https://github.com/spring-projects/spring-data-examples/tree/master/jdbc/basics)
+* [Accessing data with MySQL](https://spring.io/guides/gs/accessing-data-mysql/)
+* [Validation](https://spring.io/guides/gs/validating-form-input/)
 
 ### Additional Links
 These additional references should also help you:
