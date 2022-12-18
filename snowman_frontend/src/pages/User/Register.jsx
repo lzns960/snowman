@@ -3,23 +3,24 @@ import { useNavigate } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import AllContainer from '../../components/AllContainer';
-
-import { connect } from 'react-redux';
 import { register } from '../../store/action/auth';
 
 export default function Register() {
+  const dispatch = useDispatch();
+  const { message } = useSelector((state) => state.message);
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rePassword, setRePassword] = useState('');
   const [nickName, setNickName] = useState('');
   const [successful, setSuccessful] = useState(false);
 
-  const { message } = useSelector((state) => state.message);
-  const dispatch = useDispatch();
-
+  const linkSnowmanGarden = () => {
+    navigate('/');
+  };
   const emailChange = (e) => {
     setEmail(e.target.value);
-    console.log(email);
   };
   const passwordChange = (e) => {
     setPassword(e.target.value);
@@ -32,27 +33,18 @@ export default function Register() {
   };
 
   const onSubmitHandler = (e) => {
-    console.log('눌렀음');
     e.preventDefault();
-
-    setSuccessful(false);
 
     dispatch(register(email, password, nickName))
       .then(() => {
         setSuccessful(true);
         alert('회원가입을 성공적으로 완료했습니다!');
+        linkSnowmanGarden();
       })
       .catch(() => {
-        console.log('실패');
         setSuccessful(false);
+        alert('회원가입이 실패했습니다! 다시 시도해주세요.');
       });
-
-    navigate('/snowmanGarden');
-  };
-
-  const navigate = useNavigate();
-  const linkSnowmanGarden = () => {
-    navigate('/snowmanGarden');
   };
 
   return (
@@ -127,17 +119,6 @@ const NameInput = styled.input`
   color: black;
 `;
 
-const RegisterContent = styled.textarea`
-  width: 100%;
-  height: 40vh;
-  border-radius: 10px;
-  resize: none;
-  white-space: pre-wrap;
-  padding: 4%;
-  box-sizing: border-box;
-  color: black;
-`;
-
 const BtnBox = styled.div`
   margin: 5% 0;
   padding: 0 5%;
@@ -164,7 +145,7 @@ const BackBtn = styled.div`
   }
 `;
 
-const RegisterBtn = styled.div`
+const RegisterBtn = styled.button`
   width: 30%;
   font-size: 1rem;
   background-color: #ce4545;

@@ -1,7 +1,8 @@
-const BASE_URL = 'http://localhost:8000'
+const BASE_URL = 'http://localhost:8080';
+
 export const API = {
-  LOGIN: `${BASE_URL}/user/signin`,
-  REGISTER: `${BASE_URL}`,
+  REGISTER: `${BASE_URL}/api/auth/signup`,
+  LOGIN: `${BASE_URL}/api/auth/login`,
   LETTER: `${BASE_URL}/faq`,
   GARDEN: `${BASE_URL}/recruit`,
   DESIGN: `${BASE_URL}`,

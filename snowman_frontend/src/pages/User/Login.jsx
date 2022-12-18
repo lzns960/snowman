@@ -3,18 +3,21 @@ import { useNavigate } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import AllContainer from '../../components/AllContainer';
-
 import { login } from '../../store/action/auth';
 
 export default function Register() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { message } = useSelector((state) => state.message);
+  const { isLoggedIn } = useSelector((state) => state.auth);
+
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');;
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const { isLoggedIn } = useSelector(state => state.auth);
-
-  const { message } = useSelector((state) => state.message);
-  const dispatch = useDispatch();
+  const linkSnowmanGarden = () => {
+    navigate('/');
+  };
 
   const emailChange = (e) => {
     setEmail(e.target.value);
@@ -24,27 +27,21 @@ export default function Register() {
   };
 
   const onSubmitHandler = (e) => {
-    console.log('눌렀음');
     e.preventDefault();
 
     setLoading(false);
 
-    dispatch(login(email, password ))
+    dispatch(login(email, password))
       .then(() => {
         setLoading(true);
         alert('로그인 성공!');
       })
       .catch(() => {
         setLoading(false);
-        console.log('실패');
+        alert('로그인 실패!');
       });
 
-    navigate('/snowmanGarden');
-  };
-
-  const navigate = useNavigate();
-  const linkSnowmanGarden = () => {
-    navigate('/snowmanGarden');
+    linkSnowmanGarden();
   };
 
   return (

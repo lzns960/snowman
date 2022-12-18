@@ -4,6 +4,8 @@ import Snowfall from 'react-snowfall';
 
 import SnowmanGarden from './pages/SnowmanGarden/SnowmanGarden';
 import SnowmanDesign from './pages/SnowmanDesign/SnowmanDesign';
+import Register from './pages/User/Register';
+import Login from './pages/User/Login';
 import Letter from './pages/Letter/Letter';
 import './App.css';
 import styled from 'styled-components';
@@ -16,6 +18,8 @@ function App() {
         <Routes>
           <Route path="/" element={<SnowmanGarden />} />
           <Route path="/snowmanDesign" element={<SnowmanDesign />} />
+          <Route path="/signup" element={<Register />} />
+          <Route path="/Login" element={<Login />} />
           <Route path="/letter" element={<Letter />} />
         </Routes>
       </Print>
