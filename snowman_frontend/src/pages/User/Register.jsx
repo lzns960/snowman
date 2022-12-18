@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import AllContainer from '../../components/AllContainer';
 
-import { connect } from "react-redux";
-import { register } from "../../store/action/auth";
+import { connect } from 'react-redux';
+import { register } from '../../store/action/auth';
 
 export default function Register() {
   const [email, setEmail] = useState('');
@@ -14,7 +14,7 @@ export default function Register() {
   const [nickName, setNickName] = useState('');
   const [successful, setSuccessful] = useState(false);
 
-  const { message } = useSelector(state => state.message);
+  const { message } = useSelector((state) => state.message);
   const dispatch = useDispatch();
 
   const emailChange = (e) => {
@@ -32,7 +32,7 @@ export default function Register() {
   };
 
   const onSubmitHandler = (e) => {
-    console.log('눌렀음')
+    console.log('눌렀음');
     e.preventDefault();
 
     setSuccessful(false);
@@ -40,7 +40,7 @@ export default function Register() {
     dispatch(register(email, password, nickName))
       .then(() => {
         setSuccessful(true);
-        alert('회원가입을 성공적으로 완료했습니다!')
+        alert('회원가입을 성공적으로 완료했습니다!');
       })
       .catch(() => {
         console.log('실패');
@@ -55,12 +55,12 @@ export default function Register() {
     navigate('/snowmanGarden');
   };
 
-
   return (
     <AllContainer>
       <Main>
         <RegisterTitle>회원가입</RegisterTitle>
-          <RegisterBox onSubmit={onSubmitHandler}>
+        <form onSubmit={onSubmitHandler}>
+          <RegisterBox>
             <p>이메일</p>
             <NameInput onChange={emailChange} />
             <p>비밀번호</p>
@@ -74,6 +74,7 @@ export default function Register() {
             <BackBtn onClick={linkSnowmanGarden}>뒤로가기</BackBtn>
             <RegisterBtn type="submit">회원가입</RegisterBtn>
           </BtnBox>
+        </form>
       </Main>
       <Background>
         <DarkBg></DarkBg>
@@ -108,7 +109,7 @@ const RegisterTitle = styled.div`
   margin: 20% 0 10%;
 `;
 
-const RegisterBox = styled.form`
+const RegisterBox = styled.div`
   display: flex;
   flex-direction: column;
   text-align: left;
