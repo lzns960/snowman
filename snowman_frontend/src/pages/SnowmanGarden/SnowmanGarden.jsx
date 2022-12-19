@@ -10,11 +10,16 @@ import { useNavigate } from 'react-router';
 import CaptureImage from './CaptureImage';
 import BugerModal from './BugerModal';
 
+import data from '../../data';
+import SnowmanList from './SnowmanList';
+
 export default function SnowmanGarden() {
   const navigate = useNavigate();
   const linkSnowmanDesign = () => {
     navigate('/snowmanDesign');
   };
+
+  const Data = data;
 
   return (
     <AllContainer>
@@ -33,6 +38,7 @@ export default function SnowmanGarden() {
 
         <Garden>
           <Snowman>
+            <SnowmanList props={Data} />
             <DefaultSnowman>
               <img
                 src={process.env.PUBLIC_URL + '/images/snowman.png'}
@@ -43,7 +49,6 @@ export default function SnowmanGarden() {
                 alt="snowman"
               />
             </DefaultSnowman>
-
             <SecondLine>
               <img
                 src={process.env.PUBLIC_URL + '/images/snowman.png'}
