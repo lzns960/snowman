@@ -1,10 +1,6 @@
 import styled from 'styled-components';
 import AllContainer from '../../components/AllContainer';
 
-import {
-  IoMdArrowDropleftCircle,
-  IoMdArrowDroprightCircle,
-} from 'react-icons/io';
 import ShareUrl from './ShareUrl';
 import { useNavigate } from 'react-router';
 import CaptureImage from './CaptureImage';
@@ -68,17 +64,6 @@ export default function SnowmanGarden() {
             />
           </Snowman>
 
-          <IoMdArrowDroprightCircle
-            size="30"
-            style={{
-              position: 'absolute',
-              bottom: '50vh',
-              right: '3%',
-              cursor: 'pointer',
-              zIndex: '99',
-            }}
-          />
-
           <Santa>
             <img
               src={process.env.PUBLIC_URL + '/images/treeHomeSanta.png'}
@@ -118,9 +103,52 @@ const Snowman = styled.div`
   z-index: 99;
   width: 100%;
 
-  .firstSnowman {
-    display: block;
-    margin: auto;
+  & img:hover {
+    transform: scale(1.8);
+    cursor: pointer;
+    z-index: 108;
+  }
+  .snowman1 {
+    position: absolute;
+    bottom: 7vh;
+    left: 37%;
+    transform: scale(1.6);
+    z-index: 106;
+  }
+  .snowman2 {
+    position: absolute;
+    bottom: 13vh;
+    left: 20%;
+    transform: scale(1.6);
+    z-index: 105;
+  }
+  .snowman3 {
+    position: absolute;
+    bottom: 13vh;
+    left: 57%;
+    transform: scale(1.6);
+    z-index: 105;
+  }
+  .snowman4 {
+    position: absolute;
+    bottom: 20vh;
+    left: 10%;
+    transform: scale(1.6);
+    z-index: 104;
+  }
+  .snowman5 {
+    position: absolute;
+    bottom: 20vh;
+    left: 37%;
+    transform: scale(1.6);
+    z-index: 104;
+  }
+  .snowman6 {
+    position: absolute;
+    bottom: 20vh;
+    right: 10%;
+    transform: scale(1.6);
+    z-index: 104;
   }
 `;
 const DefaultSnowman = styled.div`
