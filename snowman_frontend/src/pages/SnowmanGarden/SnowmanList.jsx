@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import Pagination from 'react-js-pagination';
 import '../../styles/Paging.css';
-
+import {
+  IoMdArrowDropleftCircle,
+  IoMdArrowDroprightCircle,
+} from 'react-icons/io';
 export default function SnowmanList({ props }) {
   /* pagingnation */
   // 첫 번째 페이지
@@ -19,23 +22,20 @@ export default function SnowmanList({ props }) {
         {props.length > 0 ? (
           props
             .slice(pagePost * (page - 1), pagePost * (page - 1) + pagePost)
-            .map(function (prop, i) {
-              console.log(prop[i].Head);
+            .map((prop, i) => {
               return (
-                <>
-                  <div key={i}>
-                    <img
-                      src={
-                        process.env.PUBLIC_URL +
-                        '/images/snowmanList/' +
-                        props[i][i].Head +
-                        props[i][i].Body +
-                        '.png'
-                      }
-                      alt="snowman"
-                    />
-                  </div>
-                </>
+                <div key={i}>
+                  <img
+                    src={
+                      process.env.PUBLIC_URL +
+                      '/images/snowmanList/' +
+                      prop.Head +
+                      prop.Body +
+                      '.png'
+                    }
+                    alt="snowman"
+                  />
+                </div>
               );
             })
         ) : (
@@ -50,9 +50,9 @@ export default function SnowmanList({ props }) {
           // 페이지 총 아이템수
           totalItemsCount={props.length}
           // 페이지 범위
-          pageRangeDisplayed={5}
+          pageRangeDisplayed={3}
           // 이전 페이지 탐색 버튼의 텍스트
-          prevPageText={'<'}
+          prevPageText={<IoMdArrowDropleftCircle />}
           // 다음 페이지 탐색 버튼의 텍스트
           nextPageText={'>'}
           // 페이지 변경 핸들러 pageNumber를 인수로 수신

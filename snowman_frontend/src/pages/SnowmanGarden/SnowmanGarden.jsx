@@ -68,16 +68,6 @@ export default function SnowmanGarden() {
             />
           </Snowman>
 
-          <IoMdArrowDropleftCircle
-            size="30"
-            style={{
-              position: 'absolute',
-              bottom: '50vh',
-              left: '3%',
-              cursor: 'pointer',
-              zIndex: '99',
-            }}
-          />
           <IoMdArrowDroprightCircle
             size="30"
             style={{
