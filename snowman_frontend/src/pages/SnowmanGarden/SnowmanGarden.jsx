@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import AllContainer from '../../components/AllContainer';
-import { GiHamburgerMenu } from 'react-icons/gi';
+
 import {
   IoMdArrowDropleftCircle,
   IoMdArrowDroprightCircle,
@@ -8,25 +8,18 @@ import {
 import ShareUrl from './ShareUrl';
 import { useNavigate } from 'react-router';
 import CaptureImage from './CaptureImage';
+import BugerModal from './BugerModal';
 
 export default function SnowmanGarden() {
   const navigate = useNavigate();
   const linkSnowmanDesign = () => {
     navigate('/snowmanDesign');
   };
+
   return (
     <AllContainer>
       <Main>
-        <GiHamburgerMenu
-          size="30"
-          style={{
-            position: 'absolute',
-            top: '2.5%',
-            right: '3%',
-            zIndex: '99',
-            cursor: 'pointer',
-          }}
-        />
+        <BugerModal />
         <MainText>
           <span style={{ color: '#f5c51f' }}>수지</span> 님의 정원에
           <br></br>

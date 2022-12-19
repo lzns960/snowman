@@ -1,14 +1,14 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import styled from 'styled-components';
 import Snowfall from 'react-snowfall';
+import './App.css';
 
 import SnowmanGarden from './pages/SnowmanGarden/SnowmanGarden';
 import SnowmanDesign from './pages/SnowmanDesign/SnowmanDesign';
 import Register from './pages/User/Register';
 import Login from './pages/User/Login';
 import Letter from './pages/Letter/Letter';
-import './App.css';
-import styled from 'styled-components';
 
 function App() {
   return (
