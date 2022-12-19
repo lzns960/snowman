@@ -66,6 +66,7 @@ const Main = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
+  z-index: 4;
 `;
 
 const LetterTitle = styled.div`
@@ -161,14 +162,14 @@ const DarkBg = styled.div`
   height: 100%;
   top: 0;
   background-color: rgba(0, 0, 0, 0.6);
-  z-index: -1;
+  z-index: 3;
 `;
 
 const TreeHome = styled.div`
   position: absolute;
   bottom: 40vh;
   width: 100%;
-  z-index: -2;
+  z-index: 2;
 `;
 
 const Snow = styled.div`
@@ -177,5 +178,5 @@ const Snow = styled.div`
   bottom: 0vh;
   background-color: white;
   height: 42vh;
-  z-index: -3;
+  z-index: 1;
 `;

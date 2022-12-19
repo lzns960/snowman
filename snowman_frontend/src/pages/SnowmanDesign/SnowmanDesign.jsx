@@ -40,11 +40,12 @@ export default function SnowmanDesign() {
         <SnowmanBox>
           <Snowman>
             <img
-              src={process.env.PUBLIC_URL + '/images/ns_snowman.png'}
+              src={process.env.PUBLIC_URL + '/images/snowmanList/Base.png'}
               alt="snowman"
               style={{
                 width: '100%',
                 objectFit: 'cover',
+                transform: 'scale(1.8)'
               }}
             />
           </Snowman>
@@ -57,7 +58,9 @@ export default function SnowmanDesign() {
             </DesignBtnBox>
             <StyledSlider {...settings}>
               <AttrBox>
-                <Attr>1</Attr>
+                <Attr>
+                  <img src={process.env.PUBLIC_URL + '/images/snowmanPiece/HeadBasic.png'} alt='HeadBasic'/>
+                </Attr>
               </AttrBox>
               <AttrBox>
                 <Attr>2</Attr>
@@ -127,7 +130,7 @@ const Snowman = styled.div`
   width: 30vw;
   max-width: 200px;
   max-height: 298px;
-  z-index: -1;
+  z-index: 3;
 
   & img {
     max-width: 100%;
@@ -159,8 +162,8 @@ const DesignBtnBox = styled.div`
 
 const DesignBtn = styled.div`
   width: 49%;
-  font-size: 1.7rem;
-  line-height: 2.6rem;
+  font-size: 1.5em;
+  line-height: 1.5em;
   border-radius: 5px;
   background-color: #a2afc7;
   
@@ -188,6 +191,7 @@ const AttrBox = styled.div`
 
 
 const Attr = styled.div`
+  position:relative;
   color:black;
   max-width: 140px;
   max-height: 140px;
@@ -196,11 +200,21 @@ const Attr = styled.div`
   outline: 3px solid #f7f9fd;
   border-radius: 15px;
   background-color: white;
+  overflow: hidden;
 
   &:after {
     content: '';
     display: block;
-    padding-bottom: 80%;
+    padding-bottom: 100%;
+  }
+  
+  & img {
+    width: 150%;
+    height: 150%;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, 0);
   }
 
   &:hover {
@@ -253,7 +267,7 @@ const Tree = styled.div`
   position: absolute;
   bottom: 40vh;
   width: 100%;
-  z-index: -2;
+  z-index: 2;
 `;
 
 const Snow = styled.div`
@@ -262,5 +276,5 @@ const Snow = styled.div`
   bottom: 0vh;
   background-color: white;
   height: 42vh;
-  z-index: -3;
+  z-index: 1;
 `;
