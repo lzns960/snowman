@@ -1,14 +1,36 @@
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import styled from 'styled-components';
 import AllContainer from '../../components/AllContainer';
 import Slider from "react-slick";
+import { SnowmanHead, SnowmanBody } from './SnowmanPieceData';
+
+
 
 export default function SnowmanDesign() {
+  const [headList, setHeadList] = useState(true);
+  const [bodyList, setBodyList] = useState(false);
+  const [selectHead, setSelectHead] = useState('HeadBase');
+  const [selectBody, setSelectBody] = useState('BodyBase');
+
+  useEffect(() => {
+    console.log(selectHead);
+    console.log(selectBody);
+  })
+
+  const onChangeHead = (value) => {
+    setSelectHead(value);
+  }
+
+  const onChangeBody = (value) => {
+    setSelectBody(value);
+  }
+
   const navigate = useNavigate();
   const linkSnowmanGarden = () => {
     navigate('/');
   };
-  
+
   const linkLetter = () => {
     navigate('/letter');
   };
@@ -38,6 +60,28 @@ export default function SnowmanDesign() {
         </MainText>
 
         <SnowmanBox>
+          <SelectSnowmanHeadBox>
+            <img
+              src={process.env.PUBLIC_URL + '/images/snowmanPiece/' + selectHead + '.png'}
+              alt="snowmanHead"
+              style={{
+                width: '100%',
+                objectFit: 'cover',
+                transform: 'scale(1.8)'
+              }}
+            />
+          </SelectSnowmanHeadBox>
+          <SelectSnowmanBodyBox>
+            <img
+              src={process.env.PUBLIC_URL + '/images/snowmanPiece/' + selectBody + '.png'}
+              alt="snowmanBody"
+              style={{
+                width: '100%',
+                objectFit: 'cover',
+                transform: 'scale(1.8)'
+              }}
+            />
+          </SelectSnowmanBodyBox>
           <Snowman>
             <img
               src={process.env.PUBLIC_URL + '/images/snowmanList/Base.png'}
@@ -51,42 +95,19 @@ export default function SnowmanDesign() {
           </Snowman>
         </SnowmanBox>
 
-          <DesignBox>
-            <DesignBtnBox>
-              <DesignBtn>눈사람 머리</DesignBtn>
-              <DesignBtn>눈사람 몸</DesignBtn>
-            </DesignBtnBox>
-            <StyledSlider {...settings}>
-              <AttrBox>
-                <Attr>
-                  <img src={process.env.PUBLIC_URL + '/images/snowmanPiece/HeadBasic.png'} alt='HeadBasic'/>
-                </Attr>
-              </AttrBox>
-              <AttrBox>
-                <Attr>2</Attr>
-              </AttrBox>
-              <AttrBox>
-                <Attr>3</Attr>
-              </AttrBox>
-              <AttrBox>
-                <Attr>4</Attr>
-              </AttrBox>
-              <AttrBox>
-                <Attr>5</Attr>
-              </AttrBox>
-              <AttrBox>
-                <Attr>6</Attr>
-              </AttrBox>
-              <AttrBox>
-                <Attr>7</Attr>
-              </AttrBox>
-              <AttrBox>
-                <Attr>8</Attr>
-              </AttrBox>
-            </StyledSlider>
-          </DesignBox>
-          <BackBtn onClick={linkSnowmanGarden}>뒤로가기</BackBtn>
-          <LetterBtn onClick={linkLetter}>편지쓰러가기</LetterBtn>
+        <DesignBox>
+          <DesignBtnBox>
+            <DesignBtn onClick={() => { setHeadList(true) && setBodyList(false) }}>눈사람 머리</DesignBtn>
+            <DesignBtn onClick={() => { setHeadList(false) && setBodyList(true) }}>눈사람 몸</DesignBtn>
+          </DesignBtnBox>
+          {
+            headList == true
+              ? <SnowmanHead onChangeHead={onChangeHead} />
+              : <SnowmanBody onChangeBody={onChangeBody}  />
+          }
+        </DesignBox>
+        <BackBtn onClick={linkSnowmanGarden}>뒤로가기</BackBtn>
+        <LetterBtn onClick={linkLetter}>편지쓰러가기</LetterBtn>
 
         <Tree>
           <img
@@ -120,6 +141,28 @@ const MainText = styled.div`
 const SnowmanBox = styled.div`
   width: 100%;
   height: 100%;
+`;
+
+const SelectSnowmanHeadBox = styled.div`
+  position: absolute;
+  left: 50%;
+  bottom: 38vh;
+  transform: translate(-50%, 0);
+  width: 30vw;
+  max-width: 200px;
+  max-height: 298px;
+  z-index: 4;
+`;
+
+const SelectSnowmanBodyBox = styled.div`
+  position: absolute;
+  left: 50%;
+  bottom: 38vh;
+  transform: translate(-50%, 0);
+  width: 30vw;
+  max-width: 200px;
+  max-height: 298px;
+  z-index: 4;
 `;
 
 const Snowman = styled.div`
@@ -171,53 +214,6 @@ const DesignBtn = styled.div`
     color: white;
     background-color: #33374a;
     cursor: pointer;
-  }
-`;
-  const StyledSlider = styled(Slider)`
-    width: 100%;
-    margin: auto;
-    justify-content: space-between;
-    text-align: center;
-    overflow: hidden;
-    padding: 0.5% 0;
-
-    .slick-track {
-      display:flex;
-    }
-  `;
-
-const AttrBox = styled.div`
-`;
-
-
-const Attr = styled.div`
-  position:relative;
-  color:black;
-  max-width: 140px;
-  max-height: 140px;
-  margin: 0 5px;
-  border: 1px solid #eef0f5;
-  outline: 3px solid #f7f9fd;
-  border-radius: 15px;
-  background-color: white;
-  overflow: hidden;
-
-  &:after {
-    content: '';
-    display: block;
-    padding-bottom: 100%;
-  }
-  
-  & img {
-    width: 150%;
-    height: 150%;
-    position: absolute;
-    left: 50%;
-    top: 0;
-    transform: translate(-50%, 0);
-  }
-
-  &:hover {
   }
 `;
 
