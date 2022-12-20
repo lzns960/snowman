@@ -1,21 +1,17 @@
 import styled from 'styled-components';
-import AllContainer from '../../components/AllContainer';
-
-import ShareUrl from './ShareUrl';
 import { useNavigate } from 'react-router';
+import AllContainer from '../../components/AllContainer';
+import ShareUrl from './ShareUrl';
 import CaptureImage from './CaptureImage';
 import BugerModal from './BugerModal';
-
-import data from '../../data';
 import SnowmanList from './SnowmanList';
 
 export default function SnowmanGarden() {
   const navigate = useNavigate();
+
   const linkSnowmanDesign = () => {
     navigate('/snowmanDesign');
   };
-
-  const Data = data;
 
   return (
     <AllContainer>
@@ -34,34 +30,7 @@ export default function SnowmanGarden() {
 
         <Garden>
           <Snowman>
-            <SnowmanList props={Data} />
-            <DefaultSnowman>
-              <img
-                src={process.env.PUBLIC_URL + '/images/snowman.png'}
-                alt="snowman"
-              />
-              <img
-                src={process.env.PUBLIC_URL + '/images/snowman.png'}
-                alt="snowman"
-              />
-            </DefaultSnowman>
-            <SecondLine>
-              <img
-                src={process.env.PUBLIC_URL + '/images/snowman.png'}
-                alt="snowman"
-                className="secondSnowman"
-              />
-              <img
-                src={process.env.PUBLIC_URL + '/images/snowman.png'}
-                alt="snowman"
-                className="thirdSnowman"
-              />
-            </SecondLine>
-            <img
-              src={process.env.PUBLIC_URL + '/images/snowman.png'}
-              alt="snowman"
-              className="firstSnowman"
-            />
+            <SnowmanList />
           </Snowman>
 
           <Santa>
@@ -112,54 +81,44 @@ const Snowman = styled.div`
     position: absolute;
     bottom: 7vh;
     left: 37%;
-    transform: scale(1.6);
+    transform: scale(1.4);
     z-index: 106;
   }
   .snowman2 {
     position: absolute;
     bottom: 13vh;
     left: 20%;
-    transform: scale(1.6);
+    transform: scale(1.4);
     z-index: 105;
   }
   .snowman3 {
     position: absolute;
     bottom: 13vh;
     left: 57%;
-    transform: scale(1.6);
+    transform: scale(1.4);
     z-index: 105;
   }
   .snowman4 {
     position: absolute;
     bottom: 20vh;
     left: 10%;
-    transform: scale(1.6);
+    transform: scale(1.4);
     z-index: 104;
   }
   .snowman5 {
     position: absolute;
     bottom: 20vh;
     left: 37%;
-    transform: scale(1.6);
+    transform: scale(1.4);
     z-index: 104;
   }
   .snowman6 {
     position: absolute;
     bottom: 20vh;
     right: 10%;
-    transform: scale(1.6);
+    transform: scale(1.4);
     z-index: 104;
   }
-`;
-const DefaultSnowman = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-const SecondLine = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  width: 80%;
-  margin: auto;
 `;
 const Santa = styled.div`
   position: absolute;
