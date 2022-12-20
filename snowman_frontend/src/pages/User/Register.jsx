@@ -16,7 +16,7 @@ export default function Register() {
   const [successful, setSuccessful] = useState(false);
 
   const linkSnowmanGarden = () => {
-    navigate('/');
+    navigate('/', {state: email} );
   };
   const emailChange = (e) => {
     setEmail(e.target.value);
