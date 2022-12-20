@@ -7,8 +7,16 @@ import BugerModal from './BugerModal';
 import SnowmanList from './SnowmanList';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import authHeader from '../../store/services/auth-header'
 
 export default function SnowmanGarden(props) {
+  // 로그인유저정보
+  const { user: currentUser } = useSelector((state) => state.auth);
+  if(currentUser != null) {
+    const a = currentUser.email;
+  };
+
   const navigate = useNavigate();
 
   const linkSnowmanDesign = () => {
@@ -18,14 +26,23 @@ export default function SnowmanGarden(props) {
     navigate('/readingLetter');
   };
   const [data, setData] = useState([]);
-
+  const [nickname, setNickname] = useState('');
 
   useEffect(() => {
-    axios
-      .get('http://localhost:8080/api/snowmans/zzambbang')
+    if(currentUser != null) {
+      const a = currentUser.email;
+      axios
+      .get('http://localhost:8080/api/snowmans/'+ a )
       .then((response) => {
         setData(response.data.data);
       });
+
+      axios
+      .get('http://localhost:8080/api/users/me', { headers: authHeader() })
+      .then((response) => {
+        setNickname(response.data.nickname)
+      })
+    };
   }, []);
 
   return (
@@ -33,7 +50,7 @@ export default function SnowmanGarden(props) {
       <Main>
         <BugerModal />
         <MainText>
-          <span style={{ color: '#f5c51f' }}>수지</span> 님의 정원에
+          <span style={{ color: '#f5c51f' }}>{nickname}</span> 님의 정원에
           <br></br>총 <span style={{ color: '#ce4545' }}>{data.length}</span>{' '}
           개의 눈사람이 만들어졌어요!
           <br></br>

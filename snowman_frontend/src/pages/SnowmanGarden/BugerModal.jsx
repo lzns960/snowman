@@ -1,14 +1,18 @@
 import { useState, useRef } from 'react';
 import styled from 'styled-components';
 
+import { useDispatch } from 'react-redux';
 import { IoClose } from 'react-icons/io5';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { logout } from '../../store/action/auth'
+
 export default function BugerModal() {
   const navigate = useNavigate();
   const modalRef = useRef();
   const [modalOpen, setModalOpen] = useState(false);
+  const dispatch = useDispatch();
 
   // Link
   const linkSignUp = () => {
@@ -24,6 +28,17 @@ export default function BugerModal() {
   const closeModal = () => {
     setModalOpen(false);
   };
+
+  const onLogout = (e) => {
+    e.preventDefault();
+    dispatch(logout())
+    .then(() => {
+        navigate('/')
+        alert('로그아웃 성공!')
+      });
+  }
+
+
   useEffect(() => {
     // 이벤트 핸들러 함수
     const handler = (event) => {
@@ -63,7 +78,7 @@ export default function BugerModal() {
               <p className="user" onClick={linkLogin}>
                 로그인
               </p>
-              <p className="user">로그아웃</p>
+              <p className="user" onClick={onLogout}>로그아웃</p>
 
               <p className="user" onClick={linkSignUp}>
                 회원가입
