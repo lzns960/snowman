@@ -9,6 +9,7 @@ import SnowmanDesign from './pages/SnowmanDesign/SnowmanDesign';
 import Register from './pages/User/Register';
 import Login from './pages/User/Login';
 import Letter from './pages/Letter/Letter';
+import ReadingLetter from './pages/ReadingLetter/ReadingLetter';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/signup" element={<Register />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/letter" element={<Letter />} />
+          <Route path="/readingletter" element={<ReadingLetter />} />
         </Routes>
       </Print>
     </div>

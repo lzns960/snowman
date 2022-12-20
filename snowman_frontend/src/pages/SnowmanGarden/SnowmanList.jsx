@@ -6,10 +6,7 @@ import '../../styles/Paging.css';
 //   IoMdArrowDroprightCircle,
 // } from 'react-icons/io';
 
-import axios from 'axios';
-import { useEffect } from 'react';
-
-export default function SnowmanList() {
+export default function SnowmanList({ data }) {
   /* pagingnation */
   // 첫 번째 페이지
   const [page, setPage] = useState(1);
@@ -19,15 +16,7 @@ export default function SnowmanList() {
   const handlePageChange = (page) => {
     setPage(page);
   };
-  const [data, setData] = useState([]);
 
-  useEffect(() => {
-    axios
-      .get('http://localhost:8080/api/snowmans/zzambbang')
-      .then((response) => {
-        setData(response.data.data);
-      });
-  }, []);
   if (data) {
     return (
       <>
