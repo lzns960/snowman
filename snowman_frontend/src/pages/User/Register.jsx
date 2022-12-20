@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import AllContainer from '../../components/AllContainer';
 import { register } from '../../store/action/auth';
 
 export default function Register() {
   const dispatch = useDispatch();
-  const { message } = useSelector((state) => state.message);
   const navigate = useNavigate();
 
   const [email, setEmail] = useState('');

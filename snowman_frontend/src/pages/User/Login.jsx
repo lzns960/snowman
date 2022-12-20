@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import AllContainer from '../../components/AllContainer';
 import { login } from '../../store/action/auth';
@@ -8,9 +8,6 @@ import { login } from '../../store/action/auth';
 export default function Register() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { message } = useSelector((state) => state.message);
-  const { isLoggedIn } = useSelector((state) => state.auth);
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -109,17 +106,6 @@ const NameInput = styled.input`
   border-radius: 10px;
   margin-top: 5px;
   padding: 0 4%;
-  color: black;
-`;
-
-const LoginContent = styled.textarea`
-  width: 100%;
-  height: 40vh;
-  border-radius: 10px;
-  resize: none;
-  white-space: pre-wrap;
-  padding: 4%;
-  box-sizing: border-box;
   color: black;
 `;
 

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import styled from 'styled-components';
 import AllContainer from '../../components/AllContainer';
-import Slider from "react-slick";
 import { SnowmanHead, SnowmanBody } from './SnowmanPieceData';
 
 
@@ -33,18 +32,6 @@ export default function SnowmanDesign() {
 
   const linkLetter = () => {
     navigate('/letter');
-  };
-
-  // 슬라이드
-  const settings = {
-    dots: false,
-    arrows: false,
-    infinite: false,
-    vertical: false,
-    draggable: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 2
   };
 
   return (
@@ -101,7 +88,7 @@ export default function SnowmanDesign() {
             <DesignBtn onClick={() => { setHeadList(false) && setBodyList(true) }}>눈사람 몸</DesignBtn>
           </DesignBtnBox>
           {
-            headList == true
+            headList === true
               ? <SnowmanHead onChangeHead={onChangeHead} />
               : <SnowmanBody onChangeBody={onChangeBody}  />
           }
