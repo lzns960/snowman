@@ -11,7 +11,7 @@ import lombok.Data;
 @Data
 public class SnowmanSaveRequestDto {
 
-	private Long snowmanId;
+	// private Long snowmanId;
 	private User user;
 	private String targetEmail;
 
@@ -44,7 +44,7 @@ public class SnowmanSaveRequestDto {
 	@Override
 	public String toString() {
 		return "SnowmanSaveRequestDto{" +
-			"snowmanId=" + snowmanId +
+			// "snowmanId=" + snowmanId +
 			", user=" + user +
 			", targetEmail='" + targetEmail + '\'' +
 			", headType='" + headType + '\'' +

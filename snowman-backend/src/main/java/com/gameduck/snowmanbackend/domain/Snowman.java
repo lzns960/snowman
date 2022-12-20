@@ -5,8 +5,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
 import lombok.Builder;
@@ -21,7 +23,7 @@ import lombok.Setter;
 public class Snowman {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "snowman_id")
 	private Long id;
 
@@ -33,6 +35,7 @@ public class Snowman {
   
 	private String authorNickname;
 
+	@Lob
 	private String post;
 
 	@Builder
