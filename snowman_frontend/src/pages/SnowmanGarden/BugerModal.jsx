@@ -6,9 +6,9 @@ import { IoClose } from 'react-icons/io5';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { logout } from '../../store/action/auth'
+import { logout } from '../../store/action/auth';
 
-export default function BugerModal() {
+export default function BugerModal({ gardenEmail, currentUser }) {
   const navigate = useNavigate();
   const modalRef = useRef();
   const [modalOpen, setModalOpen] = useState(false);
@@ -16,7 +16,7 @@ export default function BugerModal() {
 
   // Link
   const linkSignUp = () => {
-    navigate('/signup');
+    navigate('/register');
   };
   const linkLogin = () => {
     navigate('/login');
@@ -31,13 +31,15 @@ export default function BugerModal() {
 
   const onLogout = (e) => {
     e.preventDefault();
-    dispatch(logout())
-    .then(() => {
-        navigate('/')
-        alert('로그아웃 성공!')
-      });
-  }
-
+    dispatch(logout()).then(() => {
+      if (gardenEmail) {
+        window.location.replace(`/snowmanGarden/${gardenEmail}`);
+      } else {
+        window.location.replace('/snowmanGarden/main');
+      }
+      alert('로그아웃 성공!');
+    });
+  };
 
   useEffect(() => {
     // 이벤트 핸들러 함수
@@ -75,14 +77,21 @@ export default function BugerModal() {
               }}
             />
             <ModalContent>
-              <p className="user" onClick={linkLogin}>
-                로그인
-              </p>
-              <p className="user" onClick={onLogout}>로그아웃</p>
+              {currentUser != null ? (
+                <p className="user" onClick={onLogout}>
+                  로그아웃
+                </p>
+              ) : (
+                <>
+                  <p className="user" onClick={linkLogin}>
+                    로그인
+                  </p>
+                  <p className="user" onClick={linkSignUp}>
+                    회원가입
+                  </p>
+                </>
+              )}
 
-              <p className="user" onClick={linkSignUp}>
-                회원가입
-              </p>
               <hr
                 style={{
                   height: '0.1rem',

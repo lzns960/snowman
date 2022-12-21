@@ -10,6 +10,7 @@ import Register from './pages/User/Register';
 import Login from './pages/User/Login';
 import Letter from './pages/Letter/Letter';
 import ReadingLetter from './pages/ReadingLetter/ReadingLetter';
+import Error404 from './pages/Error404/Error404';
 
 function App() {
   return (
@@ -17,12 +18,14 @@ function App() {
       <Print id="print">
         <Snowfall />
         <Routes>
-          <Route path="/" element={<SnowmanGarden />} />
+          <Route path="/snowmanGarden/main" element={<SnowmanGarden />} />
+          <Route path="/snowmanGarden/:email" element={<SnowmanGarden />} />
           <Route path="/snowmanDesign" element={<SnowmanDesign />} />
-          <Route path="/signup" element={<Register />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/letter" element={<Letter />} />
           <Route path="/readingletter" element={<ReadingLetter />} />
+          <Route path="*" element={<Error404 />} />
         </Routes>
       </Print>
     </div>

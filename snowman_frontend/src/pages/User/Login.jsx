@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import AllContainer from '../../components/AllContainer';
@@ -13,7 +13,11 @@ export default function Register() {
   const [loading, setLoading] = useState(false);
 
   const linkSnowmanGarden = () => {
-    navigate('/', {state: email});
+    if (email) {
+      navigate(`/snowmanGarden/${email}`, { state: email });
+    } else {
+      navigate('/snowmanGarden/main');
+    }
   };
 
   const emailChange = (e) => {

@@ -29,39 +29,53 @@ export default function ReadingLetter() {
             margin: 'auto',
           }}
         />
-        <Letter>
-          <Snowman onClick={showLetter}>
-            <div
-              className={
-                letter ? ' item front active' : ' item front notActive'
-              }
-            >
-              <img
-                src={
-                  process.env.PUBLIC_URL + '/images/snowmanList/santasanta.png'
+
+        <SnowmanBox>
+          <Letter>
+            <Snowman onClick={showLetter}>
+              <div
+                className={
+                  letter ? ' item front active' : ' item front notActive'
                 }
-                alt="snowman"
-                className="snowmanLetter"
+              >
+                <img
+                  src={
+                    process.env.PUBLIC_URL +
+                    '/images/snowmanList/santasanta.png'
+                  }
+                  alt="snowman"
+                  className="snowmanLetter"
+                  style={{
+                    width: '100%',
+                    objectFit: 'cover',
+                    transform: 'scale(1.8)',
+                  }}
+                />
+              </div>
+              <LetterContent
+                className={
+                  letter ? ' item back active' : ' item back notActive'
+                }
+              >
+                편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용
+              </LetterContent>
+            </Snowman>
+          </Letter>
+        </SnowmanBox>
+        <DesignBox>
+          <DesignBtnBox>
+            <Name>
+              <p>수지</p>
+
+              <img
+                src={process.env.PUBLIC_URL + '/images/woodenBoard.png'}
+                alt="woodenBoard"
+                className="woodenBoard"
               />
-            </div>
-            <LetterContent
-              className={letter ? ' item back active' : ' item back notActive'}
-            >
-              편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용편지내용
-            </LetterContent>
-          </Snowman>
-          <Name>
-            <p>수지</p>
-          </Name>
-          <img
-            src={process.env.PUBLIC_URL + '/images/woodenBoard.png'}
-            alt="woodenBoard"
-            className="woodenBoard"
-          />
-        </Letter>
-        <BtnBox>
-          <BackBtn onClick={linkSnowmanGarden}>뒤로가기</BackBtn>
-        </BtnBox>
+            </Name>
+            <BackBtn onClick={linkSnowmanGarden}>뒤로가기</BackBtn>
+          </DesignBtnBox>
+        </DesignBox>
       </Main>
       <Background>
         <TreeHome>
@@ -83,11 +97,9 @@ export default function ReadingLetter() {
 }
 
 const Main = styled.div`
-  position: relative;
   display: flex;
   flex-direction: column;
   text-align: center;
-  z-index: 4;
 `;
 
 const MainText = styled.div`
@@ -96,12 +108,6 @@ const MainText = styled.div`
   z-index: 99;
   line-height: 2rem;
 `;
-const LetterTitle = styled.div`
-  color: white;
-  font-size: 4rem;
-  margin: 20% 0 5%;
-`;
-
 const LetterContent = styled.div`
   position: absolute;
   left: 0;
@@ -109,31 +115,20 @@ const LetterContent = styled.div`
 
   top: 10%;
   width: 100%;
-  padding: 5%;
+  padding: 10%;
   background-color: rgba(0, 0, 0, 0.6);
   line-height: 150%;
-  // vertical-align: baseline;
+  border-radius: 20px;
+  margin-top: 3rem;
   text-align: center;
-
-  border-radius: 5px;
-  // margin-top: 7%;
-  // z-index: 999;
-
-  // & p {
-  //   color: #0f1322d8;
-  // }
 `;
 const Letter = styled.div`
   padding: 0 5%;
-  .woodenBoard {
-    width: 30%;
-    float: right;
-  }
 `;
 
 const Name = styled.div`
   position: absolute;
-  width: 20%;
+  width: 49%;
   font-size: 1.2rem;
   line-height: 150%;
   vertical-align: baseline;
@@ -142,18 +137,28 @@ const Name = styled.div`
   text-align: center;
   right: 8%;
   border-radius: 5px;
-  margin-top: 5%;
 
+  .woodenBoard {
+    position: absolute;
+    width: inherit;
+    float: right;
+  }
   & p {
     color: #0f1322d8;
+    position: absolute;
   }
 `;
 const Snowman = styled.div`
-  perspective: 300px;
-  margin: auto;
-  z-index: 999;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 50vw;
   max-width: 200px;
   max-height: 298px;
+  z-index: 3;
+
+  perspective: 300px;
+  margin: auto;
   cursor: pointer;
   & img {
     max-width: 100%;
@@ -162,7 +167,7 @@ const Snowman = styled.div`
   .snowmanLetter {
     width: 100%;
     transform: scale(2);
-    margin-top: 5rem;
+    margin-top: 17rem;
   }
 
   // 회전 효과
@@ -183,13 +188,6 @@ const Snowman = styled.div`
     transform: rotateY(0deg);
   }
 `;
-const BtnBox = styled.div`
-  margin: 5% 0;
-  padding: 0 5%;
-  display: flex;
-  justify-content: space-between;
-`;
-
 const BackBtn = styled.div`
   width: 30%;
   font-size: 1rem;
@@ -209,6 +207,30 @@ const BackBtn = styled.div`
   }
 `;
 
+const DesignBox = styled.div`
+  width: 85%;
+  height: auto;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  bottom: 5%;
+  border-radius: 5px;
+  padding: 2.5% 2%;
+  z-index: 99;
+  display: flex;
+  justify-content: space-between;
+`;
+
+const DesignBtnBox = styled.div`
+  width: 100%;
+  height: 120%;
+  margin: 0 auto 10px;
+`;
+
+const SnowmanBox = styled.div`
+  width: 100%;
+  height: 100%;
+`;
 const Background = styled.div``;
 
 const TreeHome = styled.div`
