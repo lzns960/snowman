@@ -21,6 +21,9 @@ export default function BugerModal({ gardenEmail, currentUser }) {
   const linkLogin = () => {
     navigate('/login');
   };
+  const linkSnowmanGarden = () => {
+    navigate(`/snowmanGarden/${gardenEmail}`);
+  };
   // Modal
   const showModal = () => {
     setModalOpen(true);
@@ -35,7 +38,9 @@ export default function BugerModal({ gardenEmail, currentUser }) {
       if (gardenEmail) {
         window.location.replace(`/snowmanGarden/${gardenEmail}`);
       } else {
-        window.location.replace('/snowmanGarden/main');
+
+        window.location.replace('/');
+
       }
       alert('로그아웃 성공!');
     });
@@ -78,9 +83,22 @@ export default function BugerModal({ gardenEmail, currentUser }) {
             />
             <ModalContent>
               {currentUser != null ? (
-                <p className="user" onClick={onLogout}>
-                  로그아웃
-                </p>
+
+                <>
+                  <p className="user" onClick={onLogout}>
+                    로그아웃
+                  </p>
+                  <hr
+                    style={{
+                      height: '0.1rem',
+                      backgroundColor: '#c8c8c8',
+                      border: '0',
+                    }}
+                  ></hr>
+
+                  <p onClick={linkSnowmanGarden}>내 정원가기</p>
+                </>
+
               ) : (
                 <>
                   <p className="user" onClick={linkLogin}>
@@ -99,20 +117,12 @@ export default function BugerModal({ gardenEmail, currentUser }) {
                   border: '0',
                 }}
               ></hr>
-              <p>내 정원가기</p>
-              <hr
-                style={{
-                  height: '0.1rem',
-                  backgroundColor: '#c8c8c8',
-                  border: '0',
-                }}
-              ></hr>
               <p>사용방법</p>
               <p>
                 <br></br>
                 개발팀{' '}
                 <img
-                  src={process.env.PUBLIC_URL + 'favicon.ico'}
+                  src={process.env.PUBLIC_URL + '/images/gameDuck.png'}
                   alt="game-duck"
                   style={{
                     width: '1.4rem',

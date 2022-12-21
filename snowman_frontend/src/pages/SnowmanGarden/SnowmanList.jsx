@@ -1,10 +1,6 @@
 import { useState } from 'react';
 import Pagination from 'react-js-pagination';
 import '../../styles/Paging.css';
-// import {
-//   IoMdArrowDropleftCircle,
-//   IoMdArrowDroprightCircle,
-// } from 'react-icons/io';
 
 export default function SnowmanList({ data, gardenEmail }) {
   /* pagingnation */

@@ -7,7 +7,9 @@ export default function Error404() {
   const navigate = useNavigate();
 
   const linkSnowmanGarden = () => {
-    navigate('/snowmanGarden/main');
+
+    navigate('/');
+
   };
   return (
     <AllContainer>

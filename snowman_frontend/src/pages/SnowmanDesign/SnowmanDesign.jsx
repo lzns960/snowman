@@ -1,37 +1,40 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate, useLocation } from 'react-router';
 import styled from 'styled-components';
 import AllContainer from '../../components/AllContainer';
 import { SnowmanHead, SnowmanBody } from './SnowmanPieceData';
 
-
-
 export default function SnowmanDesign() {
+  const location = useLocation();
   const [headList, setHeadList] = useState(true);
   const [bodyList, setBodyList] = useState(false);
   const [selectHead, setSelectHead] = useState('HeadBase');
   const [selectBody, setSelectBody] = useState('BodyBase');
 
+  // 주소 정보
+  const emailPath = location.pathname;
+  const emailLocation = emailPath.substring(15);
+
   useEffect(() => {
     console.log(selectHead);
     console.log(selectBody);
-  })
+  });
 
   const onChangeHead = (value) => {
     setSelectHead(value);
-  }
+  };
 
   const onChangeBody = (value) => {
     setSelectBody(value);
-  }
+  };
 
   const navigate = useNavigate();
   const linkSnowmanGarden = () => {
-    navigate('/');
+    navigate(`/snowmanGarden/${emailLocation}`);
   };
 
   const linkLetter = () => {
-    navigate('/letter');
+    navigate(`/letter/${emailLocation}`);
   };
 
   return (
@@ -49,23 +52,33 @@ export default function SnowmanDesign() {
         <SnowmanBox>
           <SelectSnowmanHeadBox>
             <img
-              src={process.env.PUBLIC_URL + '/images/snowmanPiece/' + selectHead + '.png'}
+              src={
+                process.env.PUBLIC_URL +
+                '/images/snowmanPiece/' +
+                selectHead +
+                '.png'
+              }
               alt="snowmanHead"
               style={{
                 width: '100%',
                 objectFit: 'cover',
-                transform: 'scale(1.8)'
+                transform: 'scale(1.8)',
               }}
             />
           </SelectSnowmanHeadBox>
           <SelectSnowmanBodyBox>
             <img
-              src={process.env.PUBLIC_URL + '/images/snowmanPiece/' + selectBody + '.png'}
+              src={
+                process.env.PUBLIC_URL +
+                '/images/snowmanPiece/' +
+                selectBody +
+                '.png'
+              }
               alt="snowmanBody"
               style={{
                 width: '100%',
                 objectFit: 'cover',
-                transform: 'scale(1.8)'
+                transform: 'scale(1.8)',
               }}
             />
           </SelectSnowmanBodyBox>
@@ -76,7 +89,7 @@ export default function SnowmanDesign() {
               style={{
                 width: '100%',
                 objectFit: 'cover',
-                transform: 'scale(1.8)'
+                transform: 'scale(1.8)',
               }}
             />
           </Snowman>
@@ -84,14 +97,26 @@ export default function SnowmanDesign() {
 
         <DesignBox>
           <DesignBtnBox>
-            <DesignBtn onClick={() => { setHeadList(true) && setBodyList(false) }}>눈사람 머리</DesignBtn>
-            <DesignBtn onClick={() => { setHeadList(false) && setBodyList(true) }}>눈사람 몸</DesignBtn>
+            <DesignBtn
+              onClick={() => {
+                setHeadList(true) && setBodyList(false);
+              }}
+            >
+              눈사람 머리
+            </DesignBtn>
+            <DesignBtn
+              onClick={() => {
+                setHeadList(false) && setBodyList(true);
+              }}
+            >
+              눈사람 몸
+            </DesignBtn>
           </DesignBtnBox>
-          {
-            headList === true
-              ? <SnowmanHead onChangeHead={onChangeHead} />
-              : <SnowmanBody onChangeBody={onChangeBody}  />
-          }
+          {headList === true ? (
+            <SnowmanHead onChangeHead={onChangeHead} />
+          ) : (
+            <SnowmanBody onChangeBody={onChangeBody} />
+          )}
         </DesignBox>
         <BackBtn onClick={linkSnowmanGarden}>뒤로가기</BackBtn>
         <LetterBtn onClick={linkLetter}>편지쓰러가기</LetterBtn>
@@ -196,7 +221,7 @@ const DesignBtn = styled.div`
   line-height: 1.5em;
   border-radius: 5px;
   background-color: #a2afc7;
-  
+
   &:hover {
     color: white;
     background-color: #33374a;

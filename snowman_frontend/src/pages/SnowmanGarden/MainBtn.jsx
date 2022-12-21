@@ -4,29 +4,17 @@ import styled from 'styled-components';
 export default function MainBtn({ gardenEmail, currentUser }) {
   const navigate = useNavigate();
   const linkSnowmanDesign = () => {
-    navigate('/snowmanDesign');
+
+    navigate(`/snowmanDesign/${gardenEmail}`);
   };
   const linkReadingLetter = () => {
-    navigate('/readingLetter');
+    navigate(`/readingLetter/${gardenEmail}`);
   };
-  const linkLogin = () => {
-    navigate('/login');
-  };
-  const linkRegister = () => {
-    navigate('/register');
-  };
+
   return (
     <>
-      {gardenEmail === 'main' ? (
-        <>
-          <DesignBtn className="loginBtn" onClick={linkLogin}>
-            로그인하러가기
-          </DesignBtn>
-          <DesignBtn className="registerBtn" onClick={linkRegister}>
-            회원가입하기
-          </DesignBtn>
-        </>
-      ) : currentUser != null ? (
+      {currentUser != null ? (
+
         <DesignBtn onClick={linkReadingLetter}>편지 읽으러가기</DesignBtn>
       ) : (
         <DesignBtn onClick={linkSnowmanDesign}>눈사람 만들어주기</DesignBtn>

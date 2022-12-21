@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router';
+
+import { useNavigate, useLocation } from 'react-router';
 import styled from 'styled-components';
 import AllContainer from '../../components/AllContainer';
 
 export default function SnowmanDesign() {
+  const location = useLocation();
+
   const [nickName, setNickName] = useState('');
   const [letter, setLetter] = useState('');
+
+  // 주소 정보
+  const emailPath = location.pathname;
+  const emailLocation = emailPath.substring(15);
 
   const nickNameChange = (e) => {
     setNickName(e.target.value);
@@ -17,10 +24,10 @@ export default function SnowmanDesign() {
 
   const navigate = useNavigate();
   const linkSnowmanDesign = () => {
-    navigate('/snowmanDesign');
+    navigate(`/snowmanDesign/${emailLocation}`);
   };
   const linkSnowmanGarden = () => {
-    navigate('/');
+    navigate(`/snowmanGarden/${emailLocation}`);
   };
   return (
     <AllContainer>
