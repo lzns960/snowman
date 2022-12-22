@@ -110,17 +110,8 @@ export default function BugerModal({ gardenEmail, currentUser }) {
                 </>
               )}
 
-              <hr
-                style={{
-                  height: '0.1rem',
-                  backgroundColor: '#c8c8c8',
-                  border: '0',
-                }}
-              ></hr>
-              <p>사용방법</p>
               <p>
                 <br></br>
-                개발팀{' '}
                 <img
                   src={process.env.PUBLIC_URL + '/images/gameDuck.png'}
                   alt="game-duck"
@@ -128,7 +119,7 @@ export default function BugerModal({ gardenEmail, currentUser }) {
                     width: '1.4rem',
                   }}
                 />{' '}
-                겜덕(Game-Duck)
+                겜덕 개발스토리<br></br>(Game-Duck)
               </p>
             </ModalContent>
           </ModalBox>
