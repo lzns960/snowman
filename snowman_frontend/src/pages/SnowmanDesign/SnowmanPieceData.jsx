@@ -23,9 +23,9 @@ export const SnowmanHead = ({ onChangeHead }) => {
   
   return (
     <StyledSlider {...settings}>
-      {snowmanHead.map((head, i) =>
-        <AttrBox>
-          <AttrHead key={i} onClick={() => onClickHead(head)}>
+      {snowmanHead.map((head) =>
+        <AttrBox key={Date.now()}> 
+          <AttrHead onClick={() => onClickHead(head)}>
             <img src={process.env.PUBLIC_URL + '/images/snowmanPiece/' + head + '.png'} alt='HeadBasic' />
           </AttrHead>
         </AttrBox>
@@ -44,8 +44,8 @@ export const SnowmanBody = ({ onChangeBody }) => {
   return (
     <StyledSlider {...settings}>
       {snowmanBody.map((body, i) =>
-        <AttrBox>
-          <AttrBody key={i} onClick={() => onClickBody(body)}>
+        <AttrBox key={Date.now()}>
+          <AttrBody onClick={() => onClickBody(body)}>
             <img src={process.env.PUBLIC_URL + '/images/snowmanPiece/' + body + '.png'} alt='BodyBasic' />
           </AttrBody>
         </AttrBox>

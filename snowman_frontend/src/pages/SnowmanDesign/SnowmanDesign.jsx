@@ -15,6 +15,7 @@ export default function SnowmanDesign() {
   const emailPath = location.pathname;
   const emailLocation = emailPath.substring(15);
 
+  console.log(emailLocation)
   useEffect(() => {
   })
 

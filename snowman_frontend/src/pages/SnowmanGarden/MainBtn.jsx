@@ -3,22 +3,30 @@ import styled from 'styled-components';
 
 export default function MainBtn({ gardenEmail, currentUser }) {
   const navigate = useNavigate();
-  const linkSnowmanDesign = () => {
 
+  const linkSnowmanDesign = () => {
     navigate(`/snowmanDesign/${gardenEmail}`);
   };
   const linkReadingLetter = () => {
     navigate(`/readingLetter/${gardenEmail}`);
   };
+  const linkRegister = () => {
+    navigate(`/register`);
+  }
 
   return (
     <>
-      {currentUser != null ? (
-
-        <DesignBtn onClick={linkReadingLetter}>편지 읽으러가기</DesignBtn>
+      {currentUser == null ? (
+        <BtnWrap>
+          <DesignBtn className="designBtn"onClick={linkSnowmanDesign}>눈사람 만들어주기</DesignBtn>
+          <DesignBtn className="registerBtn"onClick={linkRegister}>내 정원만들기</DesignBtn>
+        </BtnWrap>
+      ) : currentUser.email == gardenEmail ? (
+        <DesignBtn className="designBtn"onClick={linkReadingLetter}>편지 읽으러가기</DesignBtn>
       ) : (
-        <DesignBtn onClick={linkSnowmanDesign}>눈사람 만들어주기</DesignBtn>
+        <DesignBtn className="designBtn"onClick={linkSnowmanDesign}>눈사람 만들어주기</DesignBtn>
       )}
+
     </>
   );
 }
@@ -33,7 +41,7 @@ const DesignBtn = styled.div`
   text-align: center;
   left: 15%;
 
-  &.loginBtn {
+  &.designBtn {
     bottom: 9vh;
   }
   &.registerBtn {
@@ -47,4 +55,23 @@ const DesignBtn = styled.div`
   &.registerBtn:hover {
     background-color: #375242;
   }
+`;
+
+const BtnWrap = styled.div`
+position: absolute;
+display:flex;
+width: 90%;
+bottom: 3vh;
+left: 50%;
+transform: translate(-50%,0);
+
+& .designBtn {
+  position: static;
+  margin: 0 5px;
+}
+
+& .registerBtn {
+  position: static;
+  margin: 0 5px;
+}
 `;

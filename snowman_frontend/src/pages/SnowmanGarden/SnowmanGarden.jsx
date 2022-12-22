@@ -17,19 +17,20 @@ export default function SnowmanGarden(props) {
 
   const [data, setData] = useState([]);
 
-
   const [nickname, setNickname] = useState('');
   const [gardenEmail, setGardenEmail] = useState();
   const [connect, setConnect] = useState(false);
 
   // 로그인유저정보
   const { user: currentUser } = useSelector((state) => state.auth);
+  
   // 주소 정보
   const emailPath = location.pathname;
   const emailLocation = emailPath.substring(15);
 
   useEffect(() => {
     setGardenEmail(emailLocation);
+
     async function fetchData() {
       const result = await axios(`${API.SNOWMAN}${gardenEmail}`);
       if (result) {
@@ -37,8 +38,11 @@ export default function SnowmanGarden(props) {
         setNickname(result.data.nickname);
       }
     }
-    fetchData();
-    setConnect(true);
+  
+    if (gardenEmail !== undefined) {
+      fetchData();
+      setConnect(true);
+    }
   }, [gardenEmail]);
 
   if (connect) {
