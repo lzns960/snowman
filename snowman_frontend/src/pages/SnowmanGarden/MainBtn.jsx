@@ -18,7 +18,7 @@ export default function MainBtn({ gardenEmail, currentUser }) {
     <>
       {currentUser == null ? (
         <BtnWrap>
-          <DesignBtn className="designBtn"onClick={linkSnowmanDesign}>눈사람 만들어주기</DesignBtn>
+          <DesignBtn className="madeBtn"onClick={linkSnowmanDesign}>눈사람 만들어주기</DesignBtn>
           <DesignBtn className="registerBtn"onClick={linkRegister}>내 정원만들기</DesignBtn>
         </BtnWrap>
       ) : currentUser.email == gardenEmail ? (
@@ -41,12 +41,6 @@ const DesignBtn = styled.div`
   text-align: center;
   left: 15%;
 
-  &.designBtn {
-    bottom: 9vh;
-  }
-  &.registerBtn {
-    background-color: #527c63;
-  }
   &:hover {
     color: white;
     background-color: rgba(180, 40, 40, 1);
@@ -58,20 +52,21 @@ const DesignBtn = styled.div`
 `;
 
 const BtnWrap = styled.div`
-position: absolute;
-display:flex;
-width: 90%;
-bottom: 3vh;
-left: 50%;
-transform: translate(-50%,0);
+  position: absolute;
+  display:flex;
+  width: 90%;
+  bottom: 3vh;
+  left: 50%;
+  transform: translate(-50%,0);
 
-& .designBtn {
-  position: static;
-  margin: 0 5px;
-}
+  & .madeBtn {
+    position: static;
+    margin: 0 5px;
+  }
 
-& .registerBtn {
-  position: static;
-  margin: 0 5px;
-}
+  & .registerBtn {
+    background-color: #527c63;
+    position: static;
+    margin: 0 5px;
+  }
 `;

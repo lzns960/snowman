@@ -16,6 +16,7 @@ export default function ReadingLetter() {
   const [letter, setLetter] = useState(false);
   const [data, setData] = useState([]);
   const [nickname, setNickname] = useState('');
+  const [connect, setConnect] = useState(false);
 
   // 로그인유저정보
   const { user: currentUser } = useSelector((state) => state.auth);
@@ -37,43 +38,51 @@ export default function ReadingLetter() {
 
   useEffect(() => {
     setGardenEmail(currentUser.email);
-    if (currentUser != null) {
-      axios
-        .get(`http://localhost:8080/api/snowmans/${gardenEmail}`)
-        .then((response) => {
-          setData(response.data.snowmans);
-          setNickname(response.data.nickname);
-        });
+
+    async function fetchData() {
+      if (currentUser != null) {
+        axios
+          .get(`http://localhost:8080/api/snowmans/${gardenEmail}`)
+          .then((response) => {
+            setData(response.data.snowmans);
+            setNickname(response.data.nickname);
+          });
+      }
+    }
+
+    if (gardenEmail !== undefined) {
+      fetchData();
+      setConnect(true);
     }
   }, [gardenEmail, currentUser]);
 
   const linkSnowmanGarden = () => {
     navigate(`/snowmangarden/${gardenEmail}`);
   };
+  if (connect) {
+    return (
+      <AllContainer>
+        <GiAnticlockwiseRotation
+          size={30}
+          style={{
+            position: 'absolute',
+            left: '50%',
+            transform: ' translate(-50%, 0)',
+            top: '18%',
+          }}
+        />
 
-  return (
-    <AllContainer>
-      <GiAnticlockwiseRotation
-        size={30}
-        style={{
-          position: 'absolute',
-          left: '50%',
-          transform: ' translate(-50%, 0)',
-          top: '18%',
-        }}
-      />
-
-      <Main>
-        <BugerModal gardenEmail={gardenEmail} currentUser={currentUser} />
-        <MainText>
-          <span style={{ color: '#f5c51f' }}>{nickname}</span> 님의 편지함 ({' '}
-          <span style={{ color: '#ce4545' }}>{data.length}</span> 건)<br></br>
-          <br></br>
-          눈사람을 클릭하면 <span style={{ color: '#f5c51f' }}>편지</span>가
-          보여요!
-        </MainText>
-        {data.length > 0
-          ? data
+        <Main>
+          <BugerModal gardenEmail={gardenEmail} currentUser={currentUser} />
+          <MainText>
+            <span style={{ color: '#f5c51f' }}>{nickname}</span> 님의 편지함 ({' '}
+            <span style={{ color: '#ce4545' }}>{data.length}</span> 건)<br></br>
+            <br></br>
+            눈사람을 클릭하면 <span style={{ color: '#f5c51f' }}>편지</span>가
+            보여요!
+          </MainText>
+          {data.length > 0
+            ? data
               .slice(pagePost * (page - 1), pagePost * (page - 1) + pagePost)
               .map((a, i) => {
                 return (
@@ -105,47 +114,48 @@ export default function ReadingLetter() {
                   </Snowman>
                 );
               })
-          : null}
+            : <NullBox></NullBox>}
 
-        {data.length > 0 ? (
-          <Pagination
-            className="pagination"
-            // * 필수 값
-            // *활성 페이지
-            activePage={page}
-            // 페이지당 항목 수
-            itemsCountPerPage={1}
-            // 페이지 총 아이템수
-            totalItemsCount={data.length}
-            // 페이지 범위
-            pageRangeDisplayed={3}
-            // 이전 페이지 탐색 버튼의 텍스트
-            prevPageText={'<'}
-            // 다음 페이지 탐색 버튼의 텍스트
-            nextPageText={'>'}
-            // 페이지 변경 핸들러 pageNumber를 인수로 수신
-            onChange={handlePageChange}
-          />
-        ) : null}
-        <BackBtn onClick={linkSnowmanGarden}>뒤로가기</BackBtn>
-      </Main>
-      <Background>
-        <TreeHome>
-          <img
-            src={process.env.PUBLIC_URL + '/images/treeHome.png'}
-            alt="tree"
-            style={{
-              width: '100%',
-              objectFit: 'cover',
-              display: 'block',
-              margin: 'auto',
-            }}
-          />
-        </TreeHome>
-        <Snow></Snow>
-      </Background>
-    </AllContainer>
-  );
+          {data.length > 0 ? (
+            <Pagination
+              className="pagination"
+              // * 필수 값
+              // *활성 페이지
+              activePage={page}
+              // 페이지당 항목 수
+              itemsCountPerPage={1}
+              // 페이지 총 아이템수
+              totalItemsCount={data.length}
+              // 페이지 범위
+              pageRangeDisplayed={6}
+              // 이전 페이지 탐색 버튼의 텍스트
+              prevPageText={'<'}
+              // 다음 페이지 탐색 버튼의 텍스트
+              nextPageText={'>'}
+              // 페이지 변경 핸들러 pageNumber를 인수로 수신
+              onChange={handlePageChange}
+            />
+          ) : null}
+          <BackBtn onClick={linkSnowmanGarden}>뒤로가기</BackBtn>
+        </Main>
+        <Background>
+          <TreeHome>
+            <img
+              src={process.env.PUBLIC_URL + '/images/treeHome.png'}
+              alt="tree"
+              style={{
+                width: '100%',
+                objectFit: 'cover',
+                display: 'block',
+                margin: 'auto',
+              }}
+            />
+          </TreeHome>
+          <Snow></Snow>
+        </Background>
+      </AllContainer>
+    );
+  }
 }
 
 const Main = styled.div`
@@ -154,7 +164,7 @@ const Main = styled.div`
 
   .pagination {
     margin-top: 30vh;
-
+    width:100%;
     color: #0f1322;
     z-index: 99;
   }
@@ -169,7 +179,7 @@ const MainText = styled.div`
 `;
 
 const Snowman = styled.div`
-  perspective: 300px;
+  perspective: 500px;
   width: 100%;
   margin: auto;
   max-width: 200px;
@@ -188,29 +198,89 @@ const Snowman = styled.div`
     transform: scale(1.8);
     margin-top: 25vh;
     objectfit: cover;
-
   }
 
   // 회전 효과
-  .item {
-    backface-visibility: hidden;
-    transition: all 1s ease-in;
+
+  @keyframes snomanFront {
+    0% {
+      transform: rotateY(0deg);
+    }
+    70% {
+      opacity: 0;
+    }
+    100% {
+      transform: rotateY(180deg);
+      opacity: 0;
+    }
   }
-  .front {
-    transform: rotateY(0deg);
+
+  @keyframes snowmanBack {
+    0% {
+      transform: rotateY(-180deg);
+      opacity: 0;
+    }
+    70% {
+      opacity: 0;
+    }
+    100% {
+      transform: rotateY(0deg);
+    }
   }
+
+  @keyframes letterFront {
+    0% {
+      transform: rotateY(0deg);
+    }
+    70% {
+      opacity: 0;
+    }
+    100% {
+      transform: rotateY(180deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes letterBack {
+    0% {
+      transform: rotateY(-180deg);
+      opacity: 0;
+    }
+    70% {
+      opacity: 0;
+    }
+    100% {
+      transform: rotateY(0deg);
+    }
+  }
+
   .active.item.front {
-    transform: rotateY(180deg);
+    animation-name : snomanFront;
+    animation-duration : 1s;
+    animation-fill-mode: forwards;
   }
-  .back {
-    transform: rotateY(-180deg);
+
+  .notActive.item.front {
+    animation-name : snowmanBack;
+    animation-duration : 1s;
+    animation-fill-mode: forwards;
   }
+
   .active.item.back {
-    transform: rotateY(0deg);
+    animation-name : letterBack;
+    animation-duration : 1s;
+    animation-fill-mode: forwards;
+  }
+
+  .notActive.item.back {
+    animation-name : letterFront;
+    animation-duration : 1s;
+    animation-fill-mode: forwards;
   }
 `;
 
 const LetterContent = styled.div`
+  position:absolute;
   margin-top: -100%;
   margin-left: -30%;
   width: 150%;
@@ -243,19 +313,17 @@ const Name = styled.span`
 `;
 
 const BackBtn = styled.div`
-  width: 30%;
+  width: 80%;
   font-size: 1rem;
   background-color: #999;
   line-height: 20px;
   z-index: 99;
   padding: 0.6rem 0 0.6rem 0;
   text-align: center;
-  left: 8%;
   z-index: 99;
   border-radius: 5px;
   padding: 2.5% 2%;
-  margin-left: 2rem;
-  margin-top: 3rem;
+  margin: 20px auto 0;
 
   &:hover {
     color: white;
@@ -304,4 +372,8 @@ const Snow = styled.div`
   background-color: white;
   height: 42vh;
   z-index: 1;
+`;
+
+const NullBox = styled.div`
+  height:60vh;
 `;

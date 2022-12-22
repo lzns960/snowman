@@ -22,6 +22,6 @@ export default function MainText({ nickname, data }) {
 const UserText = styled.div`
   font-size: 1.5rem;
   margin: 2rem;
-  z-index: 99;
+  z-index: 9;
 `;
 

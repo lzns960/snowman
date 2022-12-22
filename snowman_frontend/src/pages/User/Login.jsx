@@ -103,6 +103,7 @@ const LoginBox = styled.div`
   text-align: left;
   padding: 0 5%;
   & p {
+    margin-top: 10px;
     font-size: 1.8rem;
   }
 `;

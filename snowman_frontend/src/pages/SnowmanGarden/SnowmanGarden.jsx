@@ -97,48 +97,40 @@ const Snowman = styled.div`
   & img {
     -webkit-border-radius: 100px;
   }
-
-  & img:hover {
-    transform: scale(1.8);
-    cursor: pointer;
-    z-index: 108;
-  }
+  
   .snowman1 {
     position: absolute;
     bottom: 7vh;
-    left: 37%;
-    transform: translate(-50%, 0);
-    transform: scale(1.4);
+    left: 39.5%;
+    transform: scale(1.8);
     z-index: 106;
   }
   .snowman2 {
     position: absolute;
     bottom: 13vh;
-
     left: 18%;
-    transform: scale(1.4);
+    transform: scale(1.8);
     z-index: 105;
   }
   .snowman3 {
     position: absolute;
     bottom: 13vh;
     right: 20%;
-    transform: scale(1.4);
+    transform: scale(1.8);
     z-index: 105;
   }
   .snowman4 {
     position: absolute;
     bottom: 20vh;
     left: 6%;
-    transform: scale(1.4);
+    transform: scale(1.8);
     z-index: 104;
   }
   .snowman5 {
     position: absolute;
     bottom: 20vh;
-    left: 37%;
-    transform: translate(-50%, 0);
-    transform: scale(1.4);
+    left: 39.5%;
+    transform: scale(1.8);
     z-index: 104;
   }
   .snowman6 {
@@ -146,7 +138,7 @@ const Snowman = styled.div`
     bottom: 20vh;
     right: 8%;
 
-    transform: scale(1.4);
+    transform: scale(1.8);
     z-index: 104;
   }
 `;

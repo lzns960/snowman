@@ -19,11 +19,18 @@ export default function Register() {
     if (email) {
       navigate(`/snowmanGarden/${email}`, { state: email });
     } else {
-
       navigate('/');
-
     }
   };
+
+  const linkLogin = () => {
+    if (email) {
+      navigate('/login');
+    } else {
+      navigate('/');
+    }
+  };
+
   const emailChange = (e) => {
     setEmail(e.target.value);
   };
@@ -33,6 +40,7 @@ export default function Register() {
   const rePasswordChange = (e) => {
     setRePassword(e.target.value);
   };
+
   const nickNameChange = (e) => {
     setNickName(e.target.value);
   };
@@ -44,7 +52,7 @@ export default function Register() {
       .then(() => {
         setSuccessful(true);
         alert('회원가입을 성공적으로 완료했습니다!');
-        linkSnowmanGarden();
+        linkLogin();
       })
       .catch(() => {
         setSuccessful(false);
@@ -58,7 +66,7 @@ export default function Register() {
         <RegisterTitle>회원가입</RegisterTitle>
         <form onSubmit={onSubmitHandler}>
           <RegisterBox>
-            <p>이메일</p>
+            <p>아이디</p>
             <NameInput onChange={emailChange} />
             <p>비밀번호</p>
             <NameInput onChange={passwordChange} />
@@ -112,6 +120,7 @@ const RegisterBox = styled.div`
   text-align: left;
   padding: 0 5%;
   & p {
+    margin-top: 10px;
     font-size: 1.8rem;
   }
 `;
