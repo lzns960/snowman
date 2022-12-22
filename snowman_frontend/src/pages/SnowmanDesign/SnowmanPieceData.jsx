@@ -15,7 +15,7 @@ const settings = {
 
 
 export const SnowmanHead = ({ onChangeHead }) => {
-  const snowmanHead = ['HeadBasic', 'HeadBoss', 'HeadDuck', 'HeadeCookie', 'HeadHealth', 'HeadRudolph', 'HeadSanta', 'HeadTrump'];
+  const snowmanHead = ['HeadBasic', 'HeadBoss', 'HeadDuck', 'HeadCookie', 'HeadHealth', 'HeadRudolph', 'HeadSanta', 'HeadTrump'];
 
   const onClickHead = (val) => {
     onChangeHead(val);

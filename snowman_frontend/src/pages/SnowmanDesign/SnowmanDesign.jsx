@@ -16,9 +16,7 @@ export default function SnowmanDesign() {
   const emailLocation = emailPath.substring(15);
 
   useEffect(() => {
-    console.log(selectHead);
-    console.log(selectBody);
-  });
+  })
 
   const onChangeHead = (value) => {
     setSelectHead(value);
@@ -29,12 +27,24 @@ export default function SnowmanDesign() {
   };
 
   const navigate = useNavigate();
+
   const linkSnowmanGarden = () => {
     navigate(`/snowmanGarden/${emailLocation}`);
   };
 
+  const postHead = selectHead.replace('Head','')
+  const postBody = selectBody.replace('Body','')
+
   const linkLetter = () => {
-    navigate(`/letter/${emailLocation}`);
+    if(selectHead == 'HeadBase' || selectBody == 'BodyBase') {
+      alert('눈사람을 꾸며야 편지를 쓸 수 있어요!')
+    } else {
+      navigate(`/letter/${emailLocation}`, 
+      { state: {
+        Head: postHead,
+        Body: postBody
+      }});
+    }
   };
 
   return (

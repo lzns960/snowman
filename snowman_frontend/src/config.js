@@ -5,5 +5,5 @@ export const API = {
   LOGIN: `${BASE_URL}/api/auth/login`,
   SNOWMAN: `${BASE_URL}/api/snowmans/`,
   USER: `${BASE_URL}/api/users/me`,
-  GARDEN: `${BASE_URL}/recruit`,
+  SNOWMANPOST: `${BASE_URL}/api/snowmans`,
 };
