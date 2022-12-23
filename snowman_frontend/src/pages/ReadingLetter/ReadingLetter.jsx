@@ -182,7 +182,7 @@ const MainText = styled.div`
 `;
 
 const Snowman = styled.div`
-  perspective: 500px;
+  perspective: 600px;
   width: 100%;
   margin: auto;
   max-width: 200px;
@@ -238,6 +238,7 @@ const Snowman = styled.div`
     }
     100% {
       opacity: 0;
+      transform: rotateY(180deg);
     }
   }
 
