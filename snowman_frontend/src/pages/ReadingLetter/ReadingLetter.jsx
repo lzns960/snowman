@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate, useLocation } from 'react-router';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import styled from 'styled-components';
@@ -11,16 +11,21 @@ import '../../styles/Paging.css';
 
 export default function ReadingLetter() {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [gardenEmail, setGardenEmail] = useState();
   const [letter, setLetter] = useState(false);
   const [data, setData] = useState([]);
   const [nickname, setNickname] = useState('');
   const [connect, setConnect] = useState(false);
+  const [clickLetter, setClickLetter] = useState(false);
 
   // 로그인유저정보
   const { user: currentUser } = useSelector((state) => state.auth);
 
+  // 주소 정보
+  const emailPath = location.pathname;
+  const emailLocation = emailPath.substring(15);
   // 편지 회전효과(클래스 네임 추가)
   const showLetter = () => {
     setLetter(!letter);
@@ -37,23 +42,36 @@ export default function ReadingLetter() {
   };
 
   useEffect(() => {
-    setGardenEmail(currentUser.email);
+    setGardenEmail(emailLocation);
 
-    async function fetchData() {
-      if (currentUser != null) {
-        axios
-          .get(`http://localhost:8080/api/snowmans/${gardenEmail}`)
-          .then((response) => {
-            setData(response.data.snowmans);
-            setNickname(response.data.nickname);
-          });
+    if (currentUser == null) {
+      if (gardenEmail !== undefined) {
+        alert('접근권한이 없습니다.');
+        navigate(`/snowmangarden/${gardenEmail}`);
+      }
+    } else if (currentUser.email != gardenEmail) {
+      if (gardenEmail !== undefined) {
+        alert('접근권한이 없습니다.');
+        navigate(`/snowmangarden/${gardenEmail}`);
+      }
+    } else {
+      setGardenEmail(currentUser.email);
+      async function fetchData() {
+        if (currentUser != null) {
+          axios
+            .get(`http://localhost:8080/api/snowmans/${gardenEmail}`)
+            .then((response) => {
+              setData(response.data.snowmans);
+              setNickname(response.data.nickname);
+            });
+        }
+      }
+      if (gardenEmail !== undefined) {
+        fetchData();
+        setConnect(true);
       }
     }
 
-    if (gardenEmail !== undefined) {
-      fetchData();
-      setConnect(true);
-    }
   }, [gardenEmail, currentUser]);
 
   const linkSnowmanGarden = () => {
@@ -86,8 +104,8 @@ export default function ReadingLetter() {
               .slice(pagePost * (page - 1), pagePost * (page - 1) + pagePost)
               .map((a, i) => {
                 return (
-                  <>
-                    <Snowman onClick={showLetter} key={Date.now()}>
+                  <Wrap key={Date.now()}>
+                    <Snowman onClick={showLetter}>
                       <div
                         className={
                           letter ? ' item front active' : ' item front notActive'
@@ -104,16 +122,16 @@ export default function ReadingLetter() {
                           className="snowmanLetter"
                         />
                       </div>
-                          <LetterContent
-                            className={
-                              letter ? ' item back active' : ' item back notActive'
-                            }
-                          >
-                            {a.post}
-                          </LetterContent>
+                      <LetterContent
+                        className={
+                          letter ? ' item back active' : ' item back notActive'
+                        }
+                      >
+                        {a.post}
+                      </LetterContent>
                     </Snowman>
                     <Name>{a.authorNickname}</Name>
-                  </>
+                  </Wrap>
                 );
               })
             : <NullBox></NullBox>}
@@ -159,6 +177,9 @@ export default function ReadingLetter() {
     );
   }
 }
+const Wrap = styled.div`
+  z-index: 100; 
+`;
 
 const Main = styled.div`
   display: flex;
@@ -284,8 +305,8 @@ const Snowman = styled.div`
 `;
 
 const LetterContent = styled.div`
-  margin-left: -30%;
-  margin-top: 100%;
+  margin-left: -25%;
+  margin-top: 20vh;
   width: 150%;
   height: 25vh !important;
   padding: 10%;

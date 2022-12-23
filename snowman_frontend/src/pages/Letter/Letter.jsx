@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation  } from 'react-router';
+import { useNavigate, useLocation } from 'react-router';
 import styled from 'styled-components';
 import AllContainer from '../../components/AllContainer';
 import { API } from '../../config';
@@ -26,53 +26,57 @@ export default function SnowmanDesign() {
 
   const letterChange = (e) => {
     setLetter(e.target.value);
+    console.log(e.target.value);
   };
 
   const navigate = useNavigate();
   const linkSnowmanDesign = () => {
-    navigate(`/snowmanDesign/${emailLocation}`, 
-    { state: {
-      Head: Head,
-      Body: Body
-    }});
+    navigate(`/snowmanDesign/${emailLocation}`,
+      {
+        state: {
+          Head: Head,
+          Body: Body
+        }
+      });
   };
 
   const onSubmitHandler = () => {
     axios
-    .post(API.SNOWMANPOST, {
-      targetEmail:emailLocation,
-      headType: Head,
-      bodyType: Body,
-      authorNickname: nickName,
-      post: letter,
-    })
-    .then((response) => {
-      navigate(`/snowmanGarden/${emailLocation}`)
-    })
-    .catch(function(error) {
-      console.log(error);
-    })
+      .post(API.SNOWMANPOST, {
+        targetEmail: emailLocation,
+        headType: Head,
+        bodyType: Body,
+        authorNickname: nickName,
+        post: letter,
+      })
+      .then((response) => {
+        navigate(`/snowmanGarden/${emailLocation}`)
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
   };
-  
+
   return (
     <AllContainer>
       <Main>
         <LetterTitle>편지작성</LetterTitle>
         {/* <form onSubmit={onSubmitHandler}> */}
-          <NameBox>
-            <p>닉네임(익명)</p>
-            <NameInput onChange={nickNameChange} />
-          </NameBox>
-          <LetterBox>
-            <LetterContent
-              onChange={letterChange}
-              placeholder="이곳에 편지를 써주세요!"
-            />
-          </LetterBox>
-          <BtnBox>
-            <BackBtn onClick={linkSnowmanDesign}>뒤로가기</BackBtn>
-            <LetterBtn onClick={onSubmitHandler}>작성완료</LetterBtn>
-          </BtnBox>
+        <NameBox>
+          <p>닉네임(익명)</p>
+          <NameInput onChange={nickNameChange} />
+        </NameBox>
+        <LetterBox>
+          <LetterContent
+            wrap='hard'
+            onChange={letterChange}
+            placeholder="이곳에 편지를 써주세요!"
+          />
+        </LetterBox>
+        <BtnBox>
+          <BackBtn onClick={linkSnowmanDesign}>뒤로가기</BackBtn>
+          <LetterBtn onClick={onSubmitHandler}>작성완료</LetterBtn>
+        </BtnBox>
         {/* </form> */}
       </Main>
       <Background>

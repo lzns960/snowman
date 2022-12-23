@@ -80,7 +80,7 @@ export default function Register() {
             <NameInput onChange={emailChange} />
             <ErrorMsg>{emailError ? emailErrorMessage : ''}</ErrorMsg>
             <p>비밀번호</p>
-            <NameInput onChange={passwordChange} />
+            <NameInput type="password"onChange={passwordChange} />
             <ErrorMsg>{passwordError ? passwordErrorMessage : ''}</ErrorMsg>
           </LoginBox>
           <BtnBox>
