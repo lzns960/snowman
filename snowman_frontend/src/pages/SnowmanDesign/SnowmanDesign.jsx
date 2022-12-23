@@ -15,9 +15,7 @@ export default function SnowmanDesign() {
   const emailPath = location.pathname;
   const emailLocation = emailPath.substring(15);
 
-  console.log(emailLocation)
-  useEffect(() => {
-  })
+  useEffect(() => {});
 
   const onChangeHead = (value) => {
     setSelectHead(value);
@@ -33,18 +31,19 @@ export default function SnowmanDesign() {
     navigate(`/snowmanGarden/${emailLocation}`);
   };
 
-  const postHead = selectHead.replace('Head','')
-  const postBody = selectBody.replace('Body','')
+  const postHead = selectHead.replace('Head', '');
+  const postBody = selectBody.replace('Body', '');
 
   const linkLetter = () => {
-    if(selectHead == 'HeadBase' || selectBody == 'BodyBase') {
-      alert('눈사람을 꾸며야 편지를 쓸 수 있어요!')
+    if (selectHead == 'HeadBase' || selectBody == 'BodyBase') {
+      alert('눈사람을 꾸며야 편지를 쓸 수 있어요!');
     } else {
-      navigate(`/letter/${emailLocation}`, 
-      { state: {
-        Head: postHead,
-        Body: postBody
-      }});
+      navigate(`/letter/${emailLocation}`, {
+        state: {
+          Head: postHead,
+          Body: postBody,
+        },
+      });
     }
   };
 
@@ -110,15 +109,19 @@ export default function SnowmanDesign() {
           <DesignBtnBox>
             <DesignBtn
               onClick={() => {
-                setHeadList(true) && setBodyList(false);
+                setHeadList(true);
+                setBodyList(false);
               }}
+              className={headList ? 'headtrue' : 'headfalse'}
             >
               눈사람 머리
             </DesignBtn>
             <DesignBtn
               onClick={() => {
-                setHeadList(false) && setBodyList(true);
+                setHeadList(false);
+                setBodyList(true);
               }}
+              className={bodyList ? 'bodytrue' : 'bodyfalse'}
             >
               눈사람 몸
             </DesignBtn>
@@ -231,8 +234,19 @@ const DesignBtn = styled.div`
   font-size: 1.5em;
   line-height: 1.5em;
   border-radius: 5px;
-  background-color: #a2afc7;
 
+  &.headtrue {
+    background-color: #33374a;
+  }
+  &.headfalse {
+    background-color: #a2afc7;
+  }
+  &.bodytrue {
+    background-color: #33374a;
+  }
+  &.bodyfalse {
+    background-color: #a2afc7;
+  }
   &:hover {
     color: white;
     background-color: #33374a;

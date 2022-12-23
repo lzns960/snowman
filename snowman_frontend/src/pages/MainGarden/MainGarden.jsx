@@ -36,25 +36,8 @@ export default function MainGarden(props) {
       <Main>
         <BugerModal gardenEmail={gardenEmail} currentUser={currentUser} />
         <MainGardenText>
-          <div className="words words-1">
-            <span>S</span>
-            <span>N</span>
-            <span>O</span>
-            <span>W</span>
-          </div>
-          <div className="words words-1">
-            <span>M</span>
-            <span>A</span>
-            <span>N</span>
-          </div>
-          <div className="words words-1">
-            <span>G</span>
-            <span>A</span>
-            <span>R</span>
-            <span>D</span>
-            <span>E</span>
-            <span>N</span>
-          </div>
+          <div className="text-with-animation">snowman</div>
+          <div className="subtext-with-animation">GARDEN</div>
         </MainGardenText>
         <Garden>
           <Snowman>
@@ -213,38 +196,55 @@ const Snow = styled.div`
 `;
 
 const MainGardenText = styled.div`
-  margin: 2rem;
-  z-index: 99;
+  margin-top: 4rem;
+  z-index: 9;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-  .words {
-    font-size: 0;
-    line-height: 1;
-    span {
-      color: #0f1322;
-      font-size: 5rem;
-      display: inline-block;
-      animation: move 2s ease-in-out infinite;
-      &:nth-child(2) {
-        animation-delay: 0.5s;
-      }
-      &:nth-child(3) {
-        animation-delay: 1s;
-      }
-      &:nth-child(4) {
-        animation-delay: 1.5s;
-      }
+  .text-with-animation {
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    text-align: center;
+    animation: main-text-animation 0.5s ease-in-out forwards;
+    font-weight: 600;
+    color: white;
+    overflow: hidden;
+    display: block;
+    width: 100%;
+    letter-spacing: 7px;
+  }
+  .subtext-with-animation {
+    font-size: 3rem;
+    text-align: center;
+    width: 100%;
+    color: #fff;
+    letter-spacing: 4px;
+    user-select: none;
+    position: relative;
+    opacity: 0;
+    text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+    animation: word-animation 0.5s ease-out 0.3s forwards;
+  }
+
+  @keyframes main-text-animation {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
     }
   }
 
-  @keyframes move {
+  @keyframes word-animation {
     0% {
-      transform: translate(-33%, 0);
-    }
-    50% {
-      text-shadow: 0 15px 40px rgba(255, 255, 255, 0.6);
+      top: 5vh;
+      opacity: 0;
     }
     100% {
-      transform: translate(33%, 0);
+      top: 1vh;
+      opacity: 1;
     }
   }
 `;

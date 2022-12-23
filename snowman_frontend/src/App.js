@@ -10,15 +10,14 @@ import Register from './pages/User/Register';
 import Login from './pages/User/Login';
 import Letter from './pages/Letter/Letter';
 import ReadingLetter from './pages/ReadingLetter/ReadingLetter';
+import Introduce from './pages/Introduce/Introduce';
 import Error404 from './pages/Error404/Error404';
-
 function App() {
   return (
     <div id="App">
       <Print id="print">
         <Snowfall />
         <Routes>
-
           <Route path="/" element={<MainGarden />} />
           <Route path="/snowmanGarden/:email" element={<SnowmanGarden />} />
           <Route path="/snowmanDesign/:email" element={<SnowmanDesign />} />
@@ -26,6 +25,7 @@ function App() {
           <Route path="/Login" element={<Login />} />
           <Route path="/letter/:email" element={<Letter />} />
           <Route path="/readingletter/:email" element={<ReadingLetter />} />
+          <Route path="/introduce" element={<Introduce />} />
 
           <Route path="*" element={<Error404 />} />
         </Routes>

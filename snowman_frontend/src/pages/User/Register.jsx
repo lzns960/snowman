@@ -28,7 +28,7 @@ export default function Register() {
     if (email) {
       navigate(`/snowmanGarden/${email}`, { state: email });
     } else {
-      navigate('/');
+      navigate(-1);
     }
   };
 
@@ -41,7 +41,7 @@ export default function Register() {
   };
 
   const emailChange = (e) => {
-    let value = e.target.value
+    let value = e.target.value;
     const emailRegex = /^[A-Za-z0-9+]{5,}$/;
 
     if (value === '') {
@@ -53,25 +53,28 @@ export default function Register() {
     } else if (!emailRegex.test(value)) {
       setEmailErrorMessage('아이디는 영어, 숫자만 입력 가능합니다');
       setEmailError(true);
-    } else
-      setEmailError(false);
+    } else setEmailError(false);
     setEmail(value);
   };
 
   const passwordChange = (e) => {
-    let value = e.target.value
-    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$/;
+    let value = e.target.value;
+    const passwordRegex =
+      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$/;
     if (value === '') {
       setPasswordErrorMessage('비밀번호를 입력해주세요');
       setPasswordError(true);
     } else if (!passwordRegex.test(value)) {
-      setPasswordErrorMessage('영문/숫자/특수문자 포함 6자 이상, 20자 이하로 입력해주세요',);
+      setPasswordErrorMessage(
+        '영문/숫자/특수문자 포함 6자 이상, 20자 이하로 입력해주세요',
+      );
       setPasswordError(true);
     } else if (value.length < 6 || value.length > 21) {
-      setPasswordErrorMessage('영문/숫자/특수문자 포함 6자 이상, 20자 이하로 입력해주세요',);
+      setPasswordErrorMessage(
+        '영문/숫자/특수문자 포함 6자 이상, 20자 이하로 입력해주세요',
+      );
       setPasswordError(true);
-    } else
-      setPasswordError(false);
+    } else setPasswordError(false);
     setPassword(value);
   };
 
@@ -80,15 +83,14 @@ export default function Register() {
   };
 
   const nickNameChange = (e) => {
-    let value = e.target.value
+    let value = e.target.value;
     if (value === '') {
       setNickNameErrorMessage('닉네임을 입력해주세요');
       setNickNameError(true);
-    } else if (value.length > 12) {
-      setNickNameErrorMessage('닉네임은 12글자 이내로 입력해주세요');
+    } else if (value.length > 10) {
+      setNickNameErrorMessage('닉네임은 10글자 이내로 입력해주세요');
       setNickNameError(true);
-    } else
-      setNickNameError(false);
+    } else setNickNameError(false);
     setNickName(value);
   };
 
@@ -106,16 +108,17 @@ export default function Register() {
         })
         .catch((err) => {
           if (err.response.data.status == 500) {
-            alert(err.response.data.message + ' 다른 아이디로 다시 시도해주세요')
+            alert(
+              err.response.data.message + ' 다른 아이디로 다시 시도해주세요',
+            );
             setSuccessful(false);
           } else {
             setSuccessful(false);
             alert('회원가입이 실패했습니다! 다시 시도해주세요.');
           }
         });
-    } else alert('누락되거나 잘못된 정보를 확인 후 다시 시도해주세요')
+    } else alert('누락되거나 잘못된 정보를 확인 후 다시 시도해주세요');
   };
-
 
   useEffect(() => {
     if (emailError || passwordError || nickNameError === true) {
@@ -132,16 +135,18 @@ export default function Register() {
         <form onSubmit={onSubmitHandler}>
           <RegisterBox>
             <p>아이디</p>
-            <NameInput onChange={emailChange} />
+            <NameInput onChange={emailChange} maxlength="20" />
             <ErrorMsg>{emailError ? emailErrorMessage : ''}</ErrorMsg>
             <p>비밀번호</p>
             <NameInput type="password" onChange={passwordChange} />
             <ErrorMsg>{passwordError ? passwordErrorMessage : ''}</ErrorMsg>
             <p>비밀번호확인</p>
             <NameInput type="password" onChange={rePasswordChange} />
-            <ErrorMsg>{password !== rePassword ? '비밀번호가 일치하지 않습니다' : ''}</ErrorMsg>
+            <ErrorMsg>
+              {password !== rePassword ? '비밀번호가 일치하지 않습니다' : ''}
+            </ErrorMsg>
             <p>닉네임(익명)</p>
-            <NameInput onChange={nickNameChange} />
+            <NameInput onChange={nickNameChange} maxlength="10" />
             <ErrorMsg>{nickNameError ? nickNameErrorMessage : ''}</ErrorMsg>
           </RegisterBox>
           <BtnBox>

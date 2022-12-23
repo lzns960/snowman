@@ -22,7 +22,10 @@ export default function BugerModal({ gardenEmail, currentUser }) {
     navigate('/login');
   };
   const linkSnowmanGarden = () => {
-    navigate(`/snowmanGarden/${currentUser.email}`);
+    window.location.replace(`/snowmanGarden/${currentUser.email}`);
+  };
+  const linkIntroduce = () => {
+    navigate(`/introduce`);
   };
   // Modal
   const showModal = () => {
@@ -38,9 +41,7 @@ export default function BugerModal({ gardenEmail, currentUser }) {
       if (gardenEmail) {
         window.location.replace(`/snowmanGarden/${gardenEmail}`);
       } else {
-
         window.location.replace('/');
-
       }
       alert('로그아웃 성공!');
     });
@@ -83,7 +84,6 @@ export default function BugerModal({ gardenEmail, currentUser }) {
             />
             <ModalContent>
               {currentUser != null ? (
-
                 <>
                   <p className="user" onClick={onLogout}>
                     로그아웃
@@ -98,7 +98,6 @@ export default function BugerModal({ gardenEmail, currentUser }) {
 
                   <p onClick={linkSnowmanGarden}>내 정원가기</p>
                 </>
-
               ) : (
                 <>
                   <p className="user" onClick={linkLogin}>
@@ -110,13 +109,14 @@ export default function BugerModal({ gardenEmail, currentUser }) {
                 </>
               )}
 
-              <p>
+              <p onClick={linkIntroduce}>
                 <br></br>
                 <img
                   src={process.env.PUBLIC_URL + '/images/gameDuck.png'}
                   alt="game-duck"
                   style={{
                     width: '1.4rem',
+                    verticalAlign: 'bottom',
                   }}
                 />{' '}
                 겜덕 개발스토리<br></br>(Game-Duck)

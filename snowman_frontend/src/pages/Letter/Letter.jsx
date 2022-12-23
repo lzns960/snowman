@@ -9,35 +9,37 @@ export default function SnowmanDesign() {
   const location = useLocation();
   const [nickName, setNickName] = useState('');
   const [letter, setLetter] = useState('');
-
+  const [nickNameError, setNickNameError] = useState(true);
+  const [nickNameErrorMessage, setNickNameErrorMessage] = useState('');
   // 주소 정보
   const emailPath = location.pathname;
   const emailLocation = emailPath.substring(8);
   const Head = location.state.Head;
   const Body = location.state.Body;
 
-  useEffect(() => {
-  })
-
+  useEffect(() => {});
 
   const nickNameChange = (e) => {
-    setNickName(e.target.value);
+    let value = e.target.value;
+    if (value.length > 10) {
+      setNickNameErrorMessage(' 닉네임은 10글자 이내로 입력해주세요!');
+      setNickNameError(true);
+    } else setNickNameError(false);
+    setNickName(value.substring(0, 10));
   };
 
   const letterChange = (e) => {
     setLetter(e.target.value);
-    console.log(e.target.value);
   };
 
   const navigate = useNavigate();
   const linkSnowmanDesign = () => {
-    navigate(`/snowmanDesign/${emailLocation}`,
-      {
-        state: {
-          Head: Head,
-          Body: Body
-        }
-      });
+    navigate(`/snowmanDesign/${emailLocation}`, {
+      state: {
+        Head: Head,
+        Body: Body,
+      },
+    });
   };
 
   const onSubmitHandler = () => {
@@ -50,11 +52,11 @@ export default function SnowmanDesign() {
         post: letter,
       })
       .then((response) => {
-        navigate(`/snowmanGarden/${emailLocation}`)
+        navigate(`/snowmanGarden/${emailLocation}`);
       })
       .catch(function (error) {
         console.log(error);
-      })
+      });
   };
 
   return (
@@ -64,11 +66,12 @@ export default function SnowmanDesign() {
         {/* <form onSubmit={onSubmitHandler}> */}
         <NameBox>
           <p>닉네임(익명)</p>
-          <NameInput onChange={nickNameChange} />
+          <NameInput onChange={nickNameChange} maxlength="10" />
+          <ErrorMsg>{nickNameError ? nickNameErrorMessage : ''}</ErrorMsg>
         </NameBox>
         <LetterBox>
           <LetterContent
-            wrap='hard'
+            wrap="hard"
             onChange={letterChange}
             placeholder="이곳에 편지를 써주세요!"
           />
@@ -131,6 +134,12 @@ const NameInput = styled.input`
   color: black;
 `;
 
+const ErrorMsg = styled.p`
+  margin-top: 2%;
+  margin-left: 2%;
+  color: #ce4545;
+  font-size: 1.4rem !important;
+`;
 const LetterBox = styled.div`
   margin-top: 5%;
   padding: 0 5%;
@@ -168,7 +177,7 @@ const BackBtn = styled.div`
 
   &:hover {
     color: white;
-    background-color: #646464;
+    background-color: #848484;
     cursor: pointer;
   }
 `;

@@ -22,16 +22,15 @@ export default function Register() {
     if (email) {
       navigate(`/snowmanGarden/${email}`, { state: email });
     } else {
-      navigate('/');
+      navigate(-1);
     }
   };
 
   const emailChange = (e) => {
-    if(e.target.value == '') {
+    if (e.target.value === '') {
       setEmailErrorMessage('아이디를 입력해주세요');
       setEmailError(true);
-    } else 
-    setEmailError(false);
+    } else setEmailError(false);
     setEmail(e.target.value);
   };
 
@@ -39,8 +38,7 @@ export default function Register() {
     if (e.target.value === '') {
       setPasswordErrorMessage('비밀번호를 입력해주세요');
       setPasswordError(true);
-    } else 
-    setPasswordError(false);
+    } else setPasswordError(false);
     setPassword(e.target.value);
   };
 
@@ -49,18 +47,18 @@ export default function Register() {
 
     setLoading(false);
 
-    if(allCheck === true) {
-    dispatch(login(email, password))
-      .then(() => {
-        setLoading(true);
-        linkSnowmanGarden();
-      })
-      .catch((err) => {
-        console.log(err);
-        setLoading(false);
-        alert('등록된 아이디, 비밀번호가 없습니다');
-      });
-    } else alert('누락된 정보를 확인 후 다시 시도해주세요')
+    if (allCheck === true) {
+      dispatch(login(email, password))
+        .then(() => {
+          setLoading(true);
+          linkSnowmanGarden();
+        })
+        .catch((err) => {
+          console.log(err);
+          setLoading(false);
+          alert('등록된 아이디, 비밀번호가 없습니다');
+        });
+    } else alert('누락된 정보를 확인 후 다시 시도해주세요');
   };
 
   useEffect(() => {
@@ -68,7 +66,6 @@ export default function Register() {
       setAllCheck(false);
     } else setAllCheck(true);
   });
-
 
   return (
     <AllContainer>
@@ -80,7 +77,7 @@ export default function Register() {
             <NameInput onChange={emailChange} />
             <ErrorMsg>{emailError ? emailErrorMessage : ''}</ErrorMsg>
             <p>비밀번호</p>
-            <NameInput type="password"onChange={passwordChange} />
+            <NameInput type="password" onChange={passwordChange} />
             <ErrorMsg>{passwordError ? passwordErrorMessage : ''}</ErrorMsg>
           </LoginBox>
           <BtnBox>
