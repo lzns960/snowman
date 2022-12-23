@@ -50,7 +50,9 @@ export default function MainGarden(props) {
               className="snowman1"
             />
             <img
-              src={process.env.PUBLIC_URL + '/images/snowmanList/duckduck.png'}
+
+              src={process.env.PUBLIC_URL + '/images/snowmanList/DuckDuck.png'}
+
               alt="snowman2"
               className="snowman2"
             />
