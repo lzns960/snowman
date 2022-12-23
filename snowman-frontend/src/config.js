@@ -1,4 +1,5 @@
-const BASE_URL = 'http://localhost:8080';
+const BASE_URL =
+  'http://https://web-snowman-frontend-20z52flc0kez0t.gksl2.cloudtype.app';
 
 export const API = {
   REGISTER: `${BASE_URL}/api/auth/signup`,
