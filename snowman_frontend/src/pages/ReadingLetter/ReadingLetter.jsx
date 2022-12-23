@@ -14,7 +14,8 @@ export default function ReadingLetter() {
   const location = useLocation();
 
   const [gardenEmail, setGardenEmail] = useState();
-  const [letter, setLetter] = useState(false);
+  const [letterFront, setLetterFront] = useState(false);
+  const [letterBack, setLetterBack] = useState(false);
   const [data, setData] = useState([]);
   const [nickname, setNickname] = useState('');
   const [connect, setConnect] = useState(false);
@@ -26,9 +27,20 @@ export default function ReadingLetter() {
   // 주소 정보
   const emailPath = location.pathname;
   const emailLocation = emailPath.substring(15);
+
   // 편지 회전효과(클래스 네임 추가)
+  var letterFrontClass = letterFront ? 'active' : 'notActive';
+  var letterBackClass = letterBack ? 'active' : 'notActive';
+
+  if (!clickLetter) {
+    letterFrontClass = '';
+    letterBackClass = 'first';
+  }
+
   const showLetter = () => {
-    setLetter(!letter);
+    setLetterFront(!letterFront);
+    setLetterBack(!letterBack);
+    setClickLetter(true);
   };
 
   /* pagingnation */
@@ -71,7 +83,6 @@ export default function ReadingLetter() {
         setConnect(true);
       }
     }
-
   }, [gardenEmail, currentUser]);
 
   const linkSnowmanGarden = () => {
@@ -99,18 +110,14 @@ export default function ReadingLetter() {
             눈사람을 클릭하면 <span style={{ color: '#f5c51f' }}>편지</span>가
             보여요!
           </MainText>
-          {data.length > 0
-            ? data
+          {data.length > 0 ? (
+            data
               .slice(pagePost * (page - 1), pagePost * (page - 1) + pagePost)
               .map((a, i) => {
                 return (
                   <Wrap key={Date.now()}>
                     <Snowman onClick={showLetter}>
-                      <div
-                        className={
-                          letter ? ' item front active' : ' item front notActive'
-                        }
-                      >
+                      <div className={'item front ' + letterFrontClass}>
                         <img
                           src={
                             process.env.PUBLIC_URL +
@@ -122,11 +129,7 @@ export default function ReadingLetter() {
                           className="snowmanLetter"
                         />
                       </div>
-                      <LetterContent
-                        className={
-                          letter ? ' item back active' : ' item back notActive'
-                        }
-                      >
+                      <LetterContent className={'item back ' + letterBackClass}>
                         {a.post}
                       </LetterContent>
                     </Snowman>
@@ -134,7 +137,9 @@ export default function ReadingLetter() {
                   </Wrap>
                 );
               })
-            : <NullBox></NullBox>}
+          ) : (
+            <NullBox></NullBox>
+          )}
 
           {data.length > 0 ? (
             <Pagination
@@ -178,7 +183,7 @@ export default function ReadingLetter() {
   }
 }
 const Wrap = styled.div`
-  z-index: 100; 
+  z-index: 100;
 `;
 
 const Main = styled.div`
@@ -188,11 +193,10 @@ const Main = styled.div`
   .pagination {
     position: absolute;
     bottom: 10vh;
-    width:100%;
+    width: 100%;
     color: #0f1322;
     z-index: 99;
   }
-
 `;
 
 const MainText = styled.div`
@@ -253,6 +257,7 @@ const Snowman = styled.div`
 
   @keyframes letterFront {
     0% {
+      transform: rotateY(0deg);
     }
     70% {
       opacity: 0;
@@ -266,39 +271,46 @@ const Snowman = styled.div`
   @keyframes letterBack {
     0% {
       opacity: 0;
+      transform: rotateY(-180deg);
     }
     70% {
       opacity: 0;
     }
     100% {
+      transform: rotateY(0deg);
     }
   }
-
+  .item.front {
+    height: 0;
+  }
+  .item.back.first {
+    opacity: 0;
+  }
   .active.item.front {
     height: 0;
-    animation-name : snomanFront;
-    animation-duration : 1s;
+    animation-name: snomanFront;
+    animation-duration: 1s;
     animation-fill-mode: forwards;
   }
 
   .notActive.item.front {
     height: 0;
-    animation-name : snowmanBack;
-    animation-duration : 1s;
+    animation-name: snowmanBack;
+    animation-duration: 1s;
     animation-fill-mode: forwards;
   }
 
   .active.item.back {
     height: 0;
-    animation-name : letterBack;
-    animation-duration : 1s;
+    animation-name: letterBack;
+    animation-duration: 1s;
     animation-fill-mode: forwards;
   }
 
   .notActive.item.back {
     height: 0;
-    animation-name : letterFront;
-    animation-duration : 1s;
+    animation-name: letterFront;
+    animation-duration: 1s;
     animation-fill-mode: forwards;
     margin: 0 !importent;
   }
@@ -319,11 +331,10 @@ const LetterContent = styled.div`
   font-size: 1.2rem;
 `;
 
-
 const Name = styled.span`
   position: absolute;
-  bottom:20vh;
-  left:50%;
+  bottom: 20vh;
+  left: 50%;
   color: #0f1322d8;
   font-size: 1rem;
   width: 40%;
@@ -378,5 +389,5 @@ const Snow = styled.div`
 `;
 
 const NullBox = styled.div`
-  height:60vh;
+  height: 60vh;
 `;
