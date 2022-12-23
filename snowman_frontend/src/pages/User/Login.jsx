@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
@@ -11,21 +11,36 @@ export default function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+  const [allCheck, setAllCheck] = useState(false);
+
+  const [emailErrorMessage, setEmailErrorMessage] = useState('');
+  const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
 
   const linkSnowmanGarden = () => {
     if (email) {
       navigate(`/snowmanGarden/${email}`, { state: email });
     } else {
-
       navigate('/');
-
     }
   };
 
   const emailChange = (e) => {
+    if(e.target.value == '') {
+      setEmailErrorMessage('아이디를 입력해주세요');
+      setEmailError(true);
+    } else 
+    setEmailError(false);
     setEmail(e.target.value);
   };
+
   const passwordChange = (e) => {
+    if (e.target.value === '') {
+      setPasswordErrorMessage('비밀번호를 입력해주세요');
+      setPasswordError(true);
+    } else 
+    setPasswordError(false);
     setPassword(e.target.value);
   };
 
@@ -34,18 +49,26 @@ export default function Register() {
 
     setLoading(false);
 
+    if(allCheck === true) {
     dispatch(login(email, password))
       .then(() => {
         setLoading(true);
-        alert('로그인 성공!');
+        linkSnowmanGarden();
       })
-      .catch(() => {
+      .catch((err) => {
+        console.log(err);
         setLoading(false);
-        alert('로그인 실패!');
+        alert('등록된 아이디, 비밀번호가 없습니다');
       });
-
-    linkSnowmanGarden();
+    } else alert('누락된 정보를 확인 후 다시 시도해주세요')
   };
+
+  useEffect(() => {
+    if (emailError || passwordError === true) {
+      setAllCheck(false);
+    } else setAllCheck(true);
+  });
+
 
   return (
     <AllContainer>
@@ -53,10 +76,12 @@ export default function Register() {
         <LoginTitle>로그인</LoginTitle>
         <form onSubmit={onSubmitHandler}>
           <LoginBox>
-            <p>이메일</p>
+            <p>아이디</p>
             <NameInput onChange={emailChange} />
+            <ErrorMsg>{emailError ? emailErrorMessage : ''}</ErrorMsg>
             <p>비밀번호</p>
             <NameInput onChange={passwordChange} />
+            <ErrorMsg>{passwordError ? passwordErrorMessage : ''}</ErrorMsg>
           </LoginBox>
           <BtnBox>
             <BackBtn onClick={linkSnowmanGarden}>뒤로가기</BackBtn>
@@ -114,6 +139,11 @@ const NameInput = styled.input`
   margin-top: 5px;
   padding: 0 4%;
   color: black;
+`;
+
+const ErrorMsg = styled.p`
+  color: #ce4545;
+  font-size: 1.4rem !important;
 `;
 
 const BtnBox = styled.div`

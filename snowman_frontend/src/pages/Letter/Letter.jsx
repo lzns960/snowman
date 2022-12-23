@@ -36,6 +36,7 @@ export default function SnowmanDesign() {
       Body: Body
     }});
   };
+
   const onSubmitHandler = () => {
     axios
     .post(API.SNOWMANPOST, {
