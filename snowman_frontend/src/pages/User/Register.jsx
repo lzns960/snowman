@@ -16,9 +16,9 @@ export default function Register() {
   const [allCheck, setAllCheck] = useState(false);
   const [successful, setSuccessful] = useState(false);
 
-  const [emailError, setEmailError] = useState(false);
-  const [passwordError, setPasswordError] = useState(false);
-  const [nickNameError, setNickNameError] = useState(false);
+  const [emailError, setEmailError] = useState(true);
+  const [passwordError, setPasswordError] = useState(true);
+  const [nickNameError, setNickNameError] = useState(true);
 
   const [emailErrorMessage, setEmailErrorMessage] = useState('');
   const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
@@ -65,10 +65,10 @@ export default function Register() {
       setPasswordErrorMessage('비밀번호를 입력해주세요');
       setPasswordError(true);
     } else if (!passwordRegex.test(value)) {
-      setPasswordErrorMessage('소문자/숫자/특수문자 포함 6자 이상, 20자 이하로 입력해주세요',);
+      setPasswordErrorMessage('영문/숫자/특수문자 포함 6자 이상, 20자 이하로 입력해주세요',);
       setPasswordError(true);
     } else if (value.length < 6 || value.length > 21) {
-      setPasswordErrorMessage('소문자/숫자/특수문자 포함 6자 이상, 20자 이하로 입력해주세요',);
+      setPasswordErrorMessage('영문/숫자/특수문자 포함 6자 이상, 20자 이하로 입력해주세요',);
       setPasswordError(true);
     } else
       setPasswordError(false);
