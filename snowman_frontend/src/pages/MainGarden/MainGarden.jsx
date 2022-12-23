@@ -255,6 +255,7 @@ const DesignBtn = styled.div`
   bottom: 3vh;
   font-size: 1.5rem;
   background-color: #ce4545;
+  border-radius: 5px;
 
   padding: 0.6rem 0 0.6rem 0;
   text-align: center;

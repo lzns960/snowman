@@ -31,6 +31,7 @@ export default function MainBtn({ gardenEmail, currentUser }) {
   );
 }
 const DesignBtn = styled.div`
+  border-radius: 5px;
   position: absolute;
   width: 70%;
   bottom: 3vh;
@@ -52,6 +53,7 @@ const DesignBtn = styled.div`
 `;
 
 const BtnWrap = styled.div`
+  border-radius: 5px;
   position: absolute;
   display:flex;
   width: 90%;

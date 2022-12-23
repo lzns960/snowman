@@ -22,7 +22,7 @@ export default function BugerModal({ gardenEmail, currentUser }) {
     navigate('/login');
   };
   const linkSnowmanGarden = () => {
-    navigate(`/snowmanGarden/${gardenEmail}`);
+    navigate(`/snowmanGarden/${currentUser.email}`);
   };
   // Modal
   const showModal = () => {

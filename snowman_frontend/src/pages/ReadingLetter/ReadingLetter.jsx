@@ -86,32 +86,34 @@ export default function ReadingLetter() {
               .slice(pagePost * (page - 1), pagePost * (page - 1) + pagePost)
               .map((a, i) => {
                 return (
-                  <Snowman onClick={showLetter} key={Date.now()}>
-                    <div
-                      className={
-                        letter ? ' item front active' : ' item front notActive'
-                      }
-                    >
-                      <img
-                        src={
-                          process.env.PUBLIC_URL +
-                          '/images/snowmanList/' +
-                          a.snowmanType +
-                          '.png'
+                  <>
+                    <Snowman onClick={showLetter} key={Date.now()}>
+                      <div
+                        className={
+                          letter ? ' item front active' : ' item front notActive'
                         }
-                        alt="snowman"
-                        className="snowmanLetter"
-                      />
-                    </div>
-                    <LetterContent
-                      className={
-                        letter ? ' item back active' : ' item back notActive'
-                      }
-                    >
-                      {a.post}
-                    </LetterContent>
+                      >
+                        <img
+                          src={
+                            process.env.PUBLIC_URL +
+                            '/images/snowmanList/' +
+                            a.snowmanType +
+                            '.png'
+                          }
+                          alt="snowman"
+                          className="snowmanLetter"
+                        />
+                      </div>
+                          <LetterContent
+                            className={
+                              letter ? ' item back active' : ' item back notActive'
+                            }
+                          >
+                            {a.post}
+                          </LetterContent>
+                    </Snowman>
                     <Name>{a.authorNickname}</Name>
-                  </Snowman>
+                  </>
                 );
               })
             : <NullBox></NullBox>}
@@ -163,7 +165,8 @@ const Main = styled.div`
   flex-direction: column;
 
   .pagination {
-    margin-top: 30vh;
+    position: absolute;
+    bottom: 10vh;
     width:100%;
     color: #0f1322;
     z-index: 99;
@@ -201,7 +204,6 @@ const Snowman = styled.div`
   }
 
   // 회전 효과
-
   @keyframes snomanFront {
     0% {
       transform: rotateY(0deg);
@@ -230,61 +232,61 @@ const Snowman = styled.div`
 
   @keyframes letterFront {
     0% {
-      transform: rotateY(0deg);
     }
     70% {
       opacity: 0;
     }
     100% {
-      transform: rotateY(180deg);
       opacity: 0;
     }
   }
 
   @keyframes letterBack {
     0% {
-      transform: rotateY(-180deg);
       opacity: 0;
     }
     70% {
       opacity: 0;
     }
     100% {
-      transform: rotateY(0deg);
     }
   }
 
   .active.item.front {
+    height: 0;
     animation-name : snomanFront;
     animation-duration : 1s;
     animation-fill-mode: forwards;
   }
 
   .notActive.item.front {
+    height: 0;
     animation-name : snowmanBack;
     animation-duration : 1s;
     animation-fill-mode: forwards;
   }
 
   .active.item.back {
+    height: 0;
     animation-name : letterBack;
     animation-duration : 1s;
     animation-fill-mode: forwards;
   }
 
   .notActive.item.back {
+    height: 0;
     animation-name : letterFront;
     animation-duration : 1s;
     animation-fill-mode: forwards;
+    margin: 0 !importent;
   }
 `;
 
 const LetterContent = styled.div`
-  position:absolute;
-  margin-top: -100%;
   margin-left: -30%;
+  margin-top: 100%;
   width: 150%;
-  height: 25vh;
+  height: 25vh !important;
   padding: 10%;
   background-color: rgba(0, 0, 0, 0.7);
   overflow-y: scroll;
@@ -295,16 +297,18 @@ const LetterContent = styled.div`
   font-size: 1.2rem;
 `;
 
+
 const Name = styled.span`
   position: absolute;
-  margin-left: 17vh;
-  margin-top: -3vh;
+  bottom:20vh;
+  left:50%;
   color: #0f1322d8;
   font-size: 1rem;
-  width: 50%;
+  width: 40%;
   height: 80px;
   line-height: 60px;
   text-align: center;
+  z-index: 99;
   background-image: url(${process.env.PUBLIC_URL}/images/woodenBoard.png);
   background-size: contain;
   background-repeat: no-repeat;
@@ -313,17 +317,18 @@ const Name = styled.span`
 `;
 
 const BackBtn = styled.div`
-  width: 80%;
-  font-size: 1rem;
-  background-color: #999;
-  line-height: 20px;
-  z-index: 99;
+  border-radius: 5px;
+  position: absolute;
+  width: 70%;
+  bottom: 3vh;
+  left: 15%;
+  font-size: 1.5rem;
+
   padding: 0.6rem 0 0.6rem 0;
   text-align: center;
+
+  background-color: #999;
   z-index: 99;
-  border-radius: 5px;
-  padding: 2.5% 2%;
-  margin: 20px auto 0;
 
   &:hover {
     color: white;
@@ -332,30 +337,6 @@ const BackBtn = styled.div`
   }
 `;
 
-const DesignBox = styled.div`
-  width: 85%;
-  height: auto;
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, 0);
-  bottom: 5%;
-  border-radius: 5px;
-  padding: 2.5% 2%;
-  z-index: 99;
-  display: flex;
-  justify-content: space-between;
-`;
-
-const DesignBtnBox = styled.div`
-  width: 100%;
-  height: 120%;
-  margin: 0 auto 10px;
-`;
-
-const SnowmanBox = styled.div`
-  width: 100%;
-  height: 100%;
-`;
 const Background = styled.div``;
 
 const TreeHome = styled.div`
