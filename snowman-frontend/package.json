@@ -2,6 +2,7 @@
   "name": "snowman_frontend",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://port-0-snowman-20z52flc0kez0t.gksl2.cloudtype.app",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
     "@testing-library/jest-dom": "^5.16.5",
