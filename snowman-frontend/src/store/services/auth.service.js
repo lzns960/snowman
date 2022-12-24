@@ -5,21 +5,17 @@ axios.defaults.headers['Access-Control-Allow-Origin'] = '*';
 axios.defaults.withCredentials = true;
 
 const register = (email, password, nickname) => {
-  return axios.post(API.REGISTER, {
+  return axios.post(API.REGISTER, JSON.stringify({    
     email,
     password,
-    nickname,
-  });
+    nickname,}),{withCredentials: true});
 };
 
 
 
 const login = (email, password) => {
   return axios
-    .post(API.LOGIN, {
-      email,
-      password,
-    })
+    .post(API.LOGIN, JSON.stringify({email,password}))
     .then((response) => {
       if (response.data.accessToken) {
         localStorage.setItem('user', JSON.stringify(response.data));

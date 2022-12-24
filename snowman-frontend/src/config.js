@@ -1,6 +1,4 @@
-const BASE_URL =
-  'https://port-0-snowman-20z52flc1ehpg7.gksl2.cloudtype.app';
-
+const BASE_URL = process.env.REACT_APP_API_URL;
 export const API = {
   REGISTER: `${BASE_URL}/api/auth/signup`,
   LOGIN: `${BASE_URL}/api/auth/login`,
