@@ -1,5 +1,5 @@
-// const BASE_URL =
-//   'https://web-snowman-frontend-20z52flc0kez0t.gksl2.cloudtype.app';
+const BASE_URL =
+  'https://port-0-snowman-20z52flc1ehpg7.gksl2.cloudtype.app';
 
 export const API = {
   REGISTER: `${BASE_URL}/api/auth/signup`,

@@ -6,7 +6,7 @@ const register = (email, password, nickname) => {
     email,
     password,
     nickname,
-  });
+  }, { withCredentials: true });
 };
 
 const login = (email, password) => {
