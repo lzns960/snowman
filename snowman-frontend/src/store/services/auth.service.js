@@ -1,14 +1,14 @@
 import axios from 'axios';
 import { API } from '../../config';
 
-axios.defaults.headers['Access-Control-Allow-Origin'] = '*';
-axios.defaults.withCredentials = true;
+// axios.defaults.headers['Access-Control-Allow-Origin'] = '*';
+// axios.defaults.withCredentials = true;
 
 const register = (email, password, nickname) => {
   return axios.post(API.REGISTER, JSON.stringify({    
     email,
     password,
-    nickname,}),{withCredentials: true});
+    nickname,}));
 };
 
 
