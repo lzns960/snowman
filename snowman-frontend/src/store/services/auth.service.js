@@ -5,10 +5,10 @@ import { API } from '../../config';
 // axios.defaults.withCredentials = true;
 
 const register = (email, password, nickname) => {
-  return axios.post(API.REGISTER, JSON.stringify({    
+  return axios.post(API.REGISTER, {    
     email,
     password,
-    nickname,}));
+    nickname,});
 };
 
 
