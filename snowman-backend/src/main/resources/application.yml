@@ -16,15 +16,13 @@ spring:
   output.ansi.enabled: always
 
   jpa:
-    open-in-view: false
     hibernate:
-      ddl-auto: update # create, update, none
-      naming:
-        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-    #show-sql: true
-    format-sql: true
-
-    defer-datasource-initialization: true
+      ddl-auto: update # (1) ??? ?? ??
+    show-sql: false # (2) SQL ?? ??
+    properties:
+      hibernate:
+        format_sql: true # (3) SQL pretty print
+        dialect: org.hibernate.dialect.MariaDB103Dialect
 
   jackson:
     serialization:
@@ -35,13 +33,12 @@ jwt:
   secret: n0syh2pcj1W9hGmeXsEFrfSiSqh3BE8ZOV4HOkAM2yFpFSQ9E3pWV4TQCgwvAmYaTveCepecwcZpBbFFdjfakskejrlfrpgodigksmsrjswlcka
   #  jwtExpirationInMs: 604800000
   #  jwtRefreshExpirationInMs: 86400000
+#   servlet:
+#     multipart:
+#       enabled: true
+#       max-file-size: 20MB
+#       max-request-size: 20MB
 
-  servlet:
-    multipart:
-      enabled: true
-      max-file-size: 20MB
-      max-request-size: 20MB
-
-logging.level:
-  org.hibernate.SQL: debug
-  org.hibernate.type: trace
+# logging.level:
+#   org.hibernate.SQL: debug
+#   org.hibernate.type: trace
