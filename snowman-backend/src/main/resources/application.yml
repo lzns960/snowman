@@ -8,7 +8,7 @@
 
 spring:
   datasource:
-    url: jdbc:mariadb://${DB_HOST}:${DB_PORT}/snowmangameduck?characterEncoding=UTF-8&serverTimezone=UTC
+    url: jdbc:mariadb://${DB_HOST}:${DB_PORT}/gameducksnowman?characterEncoding=UTF-8&serverTimezone=UTC
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
     driver-class-name: org.mariadb.jdbc.Driver
