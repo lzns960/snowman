@@ -45,8 +45,6 @@ export default function Introduce(props) {
             <br></br>
             프론트엔드 2명, 백엔드 1명이 모여 포트폴리오용으로 제작하였습니다 😊
             <br></br>
-            <br></br>- 참고프로젝트 : <br></br> &nbsp; &nbsp;내 트리를 꾸며줘!{' '}
-            <a href="https://colormytree.me/auth">(산타파이브팀)</a>
             <br></br>- 배경이미지: Designed by Freepik
             <br></br>- 스노우맨이미지 : 하찌노예, 술지
             <br></br>
