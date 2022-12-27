@@ -5,23 +5,18 @@ import { API } from '../../config';
 // axios.defaults.withCredentials = true;
 
 const register = (email, password, nickname) => {
-  return axios.post(API.REGISTER, JSON.stringify(email,
+  return axios.post(API.REGISTER, {
+    email,
     password,
-    nickname),{
-      headers: {
-        "Content-Type": "application/json",
-        email,
-        password,
-        nickname,
-      }    
-    });
+    nickname,
+  },{ withCredentials: true});
 };
 
 
 
 const login = (email, password) => {
   return axios
-    .post(API.LOGIN, JSON.stringify({email,password}))
+    .post(API.LOGIN, {email,password}, { withCredentials: true})
     .then((response) => {
       if (response.data.accessToken) {
         localStorage.setItem('user', JSON.stringify(response.data));
