@@ -9,14 +9,14 @@ const register = (email, password, nickname) => {
     email,
     password,
     nickname,
-  },{ withCredentials: true});
+  });
 };
 
 
 
 const login = (email, password) => {
   return axios
-    .post(API.LOGIN, {email,password}, { withCredentials: true})
+    .post(API.LOGIN, {email,password})
     .then((response) => {
       if (response.data.accessToken) {
         localStorage.setItem('user', JSON.stringify(response.data));
