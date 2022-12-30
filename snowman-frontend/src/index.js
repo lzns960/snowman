@@ -13,7 +13,7 @@ const root = createRoot(container);
 
 root.render(
   <Provider store={store}>
-      <BrowserRouter>
+       <BrowserRouter basename={process.env.REACT_APP_SNOWMAN_API_URL}>
         <GlobalStyle />
         <App />
       </BrowserRouter>
