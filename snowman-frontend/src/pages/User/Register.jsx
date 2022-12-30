@@ -100,7 +100,7 @@ export default function Register() {
     setSuccessful(false);
 
     if (allCheck === true) {
-      dispatch(register(email, password, nickName))
+      dispatch(register({email, password, nickName}))
         .then(() => {
           setSuccessful(true);
           alert('회원가입을 성공적으로 완료했습니다!');
