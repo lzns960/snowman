@@ -100,42 +100,42 @@ const Snowman = styled.div`
   
   .snowman1 {
     position: absolute;
-    bottom: 7vh;
+    bottom: 8vh;
     left: 39.5%;
     transform: scale(1.8);
     z-index: 106;
   }
   .snowman2 {
     position: absolute;
-    bottom: 13vh;
+    bottom: 14vh;
     left: 18%;
     transform: scale(1.8);
     z-index: 105;
   }
   .snowman3 {
     position: absolute;
-    bottom: 13vh;
+    bottom: 14vh;
     right: 20%;
     transform: scale(1.8);
     z-index: 105;
   }
   .snowman4 {
     position: absolute;
-    bottom: 20vh;
+    bottom: 21vh;
     left: 6%;
     transform: scale(1.8);
     z-index: 104;
   }
   .snowman5 {
     position: absolute;
-    bottom: 20vh;
+    bottom: 21vh;
     left: 39.5%;
     transform: scale(1.8);
     z-index: 104;
   }
   .snowman6 {
     position: absolute;
-    bottom: 20vh;
+    bottom: 21vh;
     right: 8%;
 
     transform: scale(1.8);
