@@ -25,6 +25,7 @@ export default function SnowmanList({ data, gardenEmail }) {
             .slice(pagePost * (page - 1), pagePost * (page - 1) + pagePost)
             .map((a, i) => {
               snowmanList.push(a.snowmanType);
+              consol.log(snowmanList);
               // const snowmanIdDivmod = a.snowmanId % 6;
               return (
                 <div key={a.snowmanId}>
