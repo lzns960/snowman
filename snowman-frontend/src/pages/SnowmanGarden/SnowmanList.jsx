@@ -14,7 +14,6 @@ export default function SnowmanList({ data, gardenEmail }) {
   // 페이지 이동 이벤트함수
   const handlePageChange = (page) => {
     setPage(page);
-
   };
 
   if (data) {
@@ -24,10 +23,8 @@ export default function SnowmanList({ data, gardenEmail }) {
           data
             .slice(pagePost * (page - 1), pagePost * (page - 1) + pagePost)
             .map((a, i) => {
-              snowmanList.splice(0);
+              // snowmanList.splice(0);
               snowmanList.push(a.snowmanType);
-              consol.log(snowmanList);
-              // const snowmanIdDivmod = a.snowmanId % 6;
               return (
                 <div key={a.snowmanId}>
                   {snowmanList.indexOf === 0 ? (
