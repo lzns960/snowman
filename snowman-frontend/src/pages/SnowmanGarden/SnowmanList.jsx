@@ -24,7 +24,7 @@ export default function SnowmanList({ data, gardenEmail }) {
           data
             .slice(pagePost * (page - 1), pagePost * (page - 1) + pagePost)
             .map((a, i) => {
-              snowmanList.push(a.snowmna_id);
+              snowmanList.push(a.snowmnan_id);
               console.log(snowmanList);
               return (
                 <div key={a.snowmanId}>
