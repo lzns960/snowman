@@ -210,7 +210,7 @@ const MainGardenText = styled.div`
     font-size: 3.5rem;
     text-transform: uppercase;
     text-align: center;
-    animation: main-text-animation 0.5s ease-in-out forwards;
+    animation: main-text-animation 1s ease-in-out forwards;
     font-weight: 600;
     color: white;
     overflow: hidden;
@@ -228,7 +228,7 @@ const MainGardenText = styled.div`
     position: relative;
     opacity: 0;
     text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
-    animation: word-animation 0.5s ease-out 0.3s forwards;
+    animation: word-animation 0.5s ease-out 1s forwards;
   }
 
   @keyframes main-text-animation {
@@ -253,16 +253,12 @@ const MainGardenText = styled.div`
 `;
 
 const DesignBtn = styled.div`
-  // position: absolute;
   width: 70%;
-  // bottom: 3vh;
   font-size: 1.5rem;
   background-color: #ce4545;
   border-radius: 5px;
-
   padding: 0.6rem 0 0.6rem 0;
   text-align: center;
-  // left: 15%;
 
   &:hover {
     color: white;
