@@ -23,6 +23,7 @@ export default function SnowmanList({ data, gardenEmail }) {
             .map((a, i) => {
               const snowmanList = [];
               snowmanList.push(a.snowmanType);
+              console.log(snowmanList);
               // const snowmanIdDivmod = a.snowmanId % 6;
               return (
                 <div key={a.snowmanId}>
