@@ -129,7 +129,7 @@ export default function SnowmanList({ data, gardenEmail }) {
 }
 
 const Page = styled.div`
+    z-index: 999;
   &.Pagination {
     width: 100%;
-    z-index: 999;
 `;
