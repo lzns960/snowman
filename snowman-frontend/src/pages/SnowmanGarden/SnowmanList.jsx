@@ -25,6 +25,7 @@ export default function SnowmanList({ data, gardenEmail }) {
             .map((a, i) => {
               // snowmanList.splice(0);
               snowmanList.push(a.snowmanType);
+              console.log(snowmanList);
               return (
                 <div key={a.snowmanId}>
                   {snowmanList.indexOf === 0 ? (
