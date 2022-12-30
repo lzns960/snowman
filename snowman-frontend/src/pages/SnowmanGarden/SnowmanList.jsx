@@ -21,10 +21,12 @@ export default function SnowmanList({ data, gardenEmail }) {
           data
             .slice(pagePost * (page - 1), pagePost * (page - 1) + pagePost)
             .map((a, i) => {
-              const snowmanIdDivmod = a.snowmanId % 6;
+              const snowmanList = [];
+              snowmanList.push(a.snowmanType);
+              // const snowmanIdDivmod = a.snowmanId % 6;
               return (
                 <div key={a.snowmanId}>
-                  {snowmanIdDivmod === 1 ? (
+                  {snowmanList.indexOf === 0 ? (
                     <img
                       src={
                         process.env.PUBLIC_URL +
@@ -35,7 +37,7 @@ export default function SnowmanList({ data, gardenEmail }) {
                       alt="snowman1"
                       className="snowman1"
                     />
-                  ) : snowmanIdDivmod === 2 ? (
+                  ) : snowmanList.indexOf === 1 ? (
                     <img
                       src={
                         process.env.PUBLIC_URL +
@@ -46,7 +48,7 @@ export default function SnowmanList({ data, gardenEmail }) {
                       alt="snowman2"
                       className="snowman2"
                     />
-                  ) : snowmanIdDivmod === 3 ? (
+                  ) : snowmanList.indexOf === 2 ? (
                     <img
                       src={
                         process.env.PUBLIC_URL +
@@ -57,7 +59,7 @@ export default function SnowmanList({ data, gardenEmail }) {
                       alt="snowman3"
                       className="snowman3"
                     />
-                  ) : snowmanIdDivmod === 4 ? (
+                  ) : snowmanList.indexOf === 3 ? (
                     <img
                       src={
                         process.env.PUBLIC_URL +
@@ -68,7 +70,7 @@ export default function SnowmanList({ data, gardenEmail }) {
                       alt="snowman4"
                       className="snowman4"
                     />
-                  ) : snowmanIdDivmod === 5 ? (
+                  ) : snowmanList.indexOf === 4 ? (
                     <img
                       src={
                         process.env.PUBLIC_URL +
@@ -79,7 +81,7 @@ export default function SnowmanList({ data, gardenEmail }) {
                       alt="snowman5"
                       className="snowman5"
                     />
-                  ) : snowmanIdDivmod === 0 ? (
+                  ) : snowmanList.indexOf === 5 ? (
                     <img
                       src={
                         process.env.PUBLIC_URL +
