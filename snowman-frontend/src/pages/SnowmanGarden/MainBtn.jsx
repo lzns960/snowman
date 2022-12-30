@@ -35,7 +35,7 @@ const DesignBtn = styled.div`
   position: absolute;
   width: 70%;
   bottom: 3vh;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   background-color: #ce4545;
 
   padding: 0.6rem 0 0.6rem 0;
