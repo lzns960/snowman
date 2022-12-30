@@ -131,4 +131,5 @@ export default function SnowmanList({ data, gardenEmail }) {
 const Page = styled.div`
   &.Pagination {
     width: 100%;
+    z-index: 999;
 `;
