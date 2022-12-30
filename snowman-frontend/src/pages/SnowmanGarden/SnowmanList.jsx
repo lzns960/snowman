@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import '../../styles/Paging.css';
 
 export default function SnowmanList({ data, gardenEmail }) {
+  const snowmanList = [];
+  
   /* pagingnation */
   // 첫 번째 페이지
   const [page, setPage] = useState(1);
@@ -12,6 +14,7 @@ export default function SnowmanList({ data, gardenEmail }) {
   // 페이지 이동 이벤트함수
   const handlePageChange = (page) => {
     setPage(page);
+    snowmanList.splice(0);
   };
 
   if (data) {
@@ -21,9 +24,7 @@ export default function SnowmanList({ data, gardenEmail }) {
           data
             .slice(pagePost * (page - 1), pagePost * (page - 1) + pagePost)
             .map((a, i) => {
-              const snowmanList = [];
               snowmanList.push(a.snowmanType);
-              console.log(snowmanList);
               // const snowmanIdDivmod = a.snowmanId % 6;
               return (
                 <div key={a.snowmanId}>

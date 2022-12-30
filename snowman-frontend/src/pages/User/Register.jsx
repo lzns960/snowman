@@ -111,7 +111,6 @@ export default function Register() {
             alert(
               err.response.data.message + ' 다른 아이디로 다시 시도해주세요',
             );
-            console.log(err);
             setSuccessful(false);
           } else {
             setSuccessful(false);
