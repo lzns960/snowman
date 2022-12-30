@@ -14,6 +14,7 @@ export default function SnowmanList({ data, gardenEmail }) {
   // 페이지 이동 이벤트함수
   const handlePageChange = (page) => {
     setPage(page);
+    snowmanList.splice(0);
   };
 
   if (data) {
@@ -23,14 +24,11 @@ export default function SnowmanList({ data, gardenEmail }) {
           data
             .slice(pagePost * (page - 1), pagePost * (page - 1) + pagePost)
             .map((a, i) => {
-              // snowmanList.splice(0);
-              snowmanList.push(a.snowmanType);
+              snowmanList.push(a.snowmna_id);
               console.log(snowmanList);
-              console.log(snowmanList.indexOf(snowmanList[i]));
-              console.log(snowmanList[i]);
               return (
                 <div key={a.snowmanId}>
-                  {snowmanList[0] ? (
+                  {snowmanList.indexOf(snowmanList[i]) === 0? (
                     <img
                       src={
                         process.env.PUBLIC_URL +
@@ -41,7 +39,7 @@ export default function SnowmanList({ data, gardenEmail }) {
                       alt="snowman1"
                       className="snowman1"
                     />
-                  ) : snowmanList[1] ? (
+                  ) : snowmanList.indexOf(snowmanList[i]) === 1? (
                     <img
                       src={
                         process.env.PUBLIC_URL +
@@ -52,7 +50,7 @@ export default function SnowmanList({ data, gardenEmail }) {
                       alt="snowman2"
                       className="snowman2"
                     />
-                  ) : snowmanList[2] ? (
+                  ) : snowmanList.indexOf(snowmanList[i]) === 2 ? (
                     <img
                       src={
                         process.env.PUBLIC_URL +
@@ -63,7 +61,7 @@ export default function SnowmanList({ data, gardenEmail }) {
                       alt="snowman3"
                       className="snowman3"
                     />
-                  ) : snowmanList[3] ? (
+                  ) : snowmanList.indexOf(snowmanList[i]) === 3 ? (
                     <img
                       src={
                         process.env.PUBLIC_URL +
@@ -74,7 +72,7 @@ export default function SnowmanList({ data, gardenEmail }) {
                       alt="snowman4"
                       className="snowman4"
                     />
-                  ) : snowmanList[4] ? (
+                  ) : snowmanList.indexOf(snowmanList[i]) === 4 ? (
                     <img
                       src={
                         process.env.PUBLIC_URL +
@@ -85,7 +83,7 @@ export default function SnowmanList({ data, gardenEmail }) {
                       alt="snowman5"
                       className="snowman5"
                     />
-                  ) : snowmanList[5] ? (
+                  ) : snowmanList.indexOf(snowmanList[i]) === 5 ? (
                     <img
                       src={
                         process.env.PUBLIC_URL +
