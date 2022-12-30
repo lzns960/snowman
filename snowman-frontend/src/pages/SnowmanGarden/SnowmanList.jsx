@@ -26,9 +26,10 @@ export default function SnowmanList({ data, gardenEmail }) {
               // snowmanList.splice(0);
               snowmanList.push(a.snowmanType);
               console.log(snowmanList);
+              console.log(snowmanList.indexOf(snowmanList[i]));
               return (
                 <div key={a.snowmanId}>
-                  {snowmanList.indexOf === 0 ? (
+                  {snowmanList.indexOf(snowmanList[i]) === 0 ? (
                     <img
                       src={
                         process.env.PUBLIC_URL +
@@ -39,7 +40,7 @@ export default function SnowmanList({ data, gardenEmail }) {
                       alt="snowman1"
                       className="snowman1"
                     />
-                  ) : snowmanList.indexOf === 1 ? (
+                  ) : snowmanList.indexOf(snowmanList[i]) === 1 ? (
                     <img
                       src={
                         process.env.PUBLIC_URL +
@@ -50,7 +51,7 @@ export default function SnowmanList({ data, gardenEmail }) {
                       alt="snowman2"
                       className="snowman2"
                     />
-                  ) : snowmanList.indexOf === 2 ? (
+                  ) : snowmanList.indexOf(snowmanList[i]) === 2 ? (
                     <img
                       src={
                         process.env.PUBLIC_URL +
@@ -61,7 +62,7 @@ export default function SnowmanList({ data, gardenEmail }) {
                       alt="snowman3"
                       className="snowman3"
                     />
-                  ) : snowmanList.indexOf === 3 ? (
+                  ) : snowmanList.indexOf(snowmanList[i]) === 3 ? (
                     <img
                       src={
                         process.env.PUBLIC_URL +
@@ -72,7 +73,7 @@ export default function SnowmanList({ data, gardenEmail }) {
                       alt="snowman4"
                       className="snowman4"
                     />
-                  ) : snowmanList.indexOf === 4 ? (
+                  ) : snowmanList.indexOf(snowmanList[i]) === 4 ? (
                     <img
                       src={
                         process.env.PUBLIC_URL +
@@ -83,7 +84,7 @@ export default function SnowmanList({ data, gardenEmail }) {
                       alt="snowman5"
                       className="snowman5"
                     />
-                  ) : snowmanList.indexOf === 5 ? (
+                  ) : snowmanList.indexOf(snowmanList[i]) === 5 ? (
                     <img
                       src={
                         process.env.PUBLIC_URL +
