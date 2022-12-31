@@ -40,7 +40,7 @@ export default function Introduce(props) {
           <br></br>
           <span>🐥 개발팀 겜덕(Game-Duck) </span>
           <SortContent>
-            스노우맨가든은 짱친 3명 (하찌노예, 술지, 쨈바른빵)이 만든 롤링페이퍼
+            스노우맨가든은 짱친 3명 (<a href="https://instagram.com/onezeun?igshid=YmMyMTA2M2Y=" target='_blank' rel="author noreferrer">하찌노예</a>, <a href="https://www.instagram.com/p/CYUP-gGhECB/?igshid=MDJmNzVkMjY=" target='_blank' rel="author noreferrer">술지</a>, <a href="https://instagram.com/modsivv?igshid=YmMyMTA2M2Y=" target='_blank' rel="author noreferrer">쨈바른빵</a>)이 만든 롤링페이퍼
             서비스입니다!
             <br></br>
             프론트엔드 2명, 백엔드 1명이 모여 포트폴리오용으로 제작하였습니다 😊
@@ -106,6 +106,27 @@ const IntroduceContent = styled.div`
 const SortContent = styled.div`
   text-align: left;
   margin-bottom: 5%;
+  & a {
+    text-decoration-line: underline ;
+    text-decoration-style: wavy;
+    text-decoration-thickness: 1.5px;
+  }
+  & a:nth-child(1) {
+    // text-emphasis: filled #ce4545;
+    // text-shadow: 1px 1px 2px #ce4545;
+    text-decoration-color:#ce4545 ;
+  }
+  & a:nth-child(2) {
+    // text-emphasis: filled #f5c51f;
+    // text-shadow: 1px 1px 2px #f5c51f;
+    text-decoration-color:#f5c51f ;
+  }
+  & a:nth-child(3) {
+    // text-emphasis: filled #527c63;
+    // text-shadow: 1px 1px 2px #527c63;
+    text-decoration-color:#527c63 ;
+  }
+  
   & p {
     text-align: center;
   }

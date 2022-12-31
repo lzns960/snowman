@@ -4,6 +4,7 @@
   margin-top: 15px;
   width: inherit;
   max-width: 768px;
+  z-index: 999;
 }
 
 ul {
